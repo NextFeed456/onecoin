@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ワンコイン切り抜き｜配信の面白い瞬間をShort化</title>
+  <meta name="description" content="配信の面白いシーンを15秒〜60秒のShort向け動画に。字幕と簡易SE付きのワンコイン切り抜きサービスです。" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #e5e7eb;
+      background: #0f172a;
+      line-height: 1.8;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+    header {
+      position: relative;
+      background: linear-gradient(135deg, rgba(2,6,23,.88), rgba(15,23,42,.92)), url('nextfeed-header.jpg') center/cover no-repeat;
+      color: #fff;
+      padding: 90px 0 80px;
+      overflow: hidden;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.28);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: clamp(32px, 6vw, 56px);
+      line-height: 1.15;
+      margin: 0 0 18px;
+      letter-spacing: .02em;
+    }
+    .lead {
+      font-size: 18px;
+      max-width: 760px;
+      margin: 0 0 28px;
+      color: #e5e7eb;
+    }
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+    }
+    .btn-main { background: #22c55e; color: #052e16; }
+    .btn-sub { background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.28); }
+    .note { font-size: 13px; color: #cbd5e1; margin-top: 12px; }
+    section { padding: 56px 0; }
+    h2 { font-size: 30px; line-height: 1.35; margin: 0 0 24px; }
+    h3 { font-size: 20px; margin: 0 0 8px; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      background: #111827;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+    }
+    .price-box {
+      background: #111827;
+      border: 2px solid #22c55e;
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 16px 34px rgba(34,197,94,.14);
+    }
+    .price { font-size: 48px; font-weight: 900; margin: 0; color: #16a34a; }
+    .small { font-size: 14px; color: #94a3b8; }
+    .list { padding-left: 1.2em; margin: 12px 0 0; }
+    .list li { margin: 6px 0; }
+    .steps { counter-reset: step; display: grid; gap: 14px; }
+    .step {
+      background: #111827;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #111827;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+    .faq { display: grid; gap: 14px; }
+    details {
+      background: #111827;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      padding: 18px 20px;
+    }
+    summary { font-weight: 700; cursor: pointer; }
+    footer { padding: 36px 0; color: #94a3b8; font-size: 13px; background:#020617; text-align:center; }
+    .form-box {
+      background: #111827;
+      color: #fff;
+      border-radius: 28px;
+      padding: 30px;
+    }
+    .form-box p { color: #cbd5e1; }
+    .warning {
+      background: rgba(251,146,60,.08);
+      border: 1px solid rgba(251,146,60,.25);
+      color: #fdba74;
+      border-radius: 18px;
+      padding: 16px 18px;
+      margin-top: 18px;
+      font-size: 14px;
+    }
+    @media (max-width: 760px) {
+      .cards { grid-template-columns: 1fr; }
+      section { padding: 42px 0; }
+      .step { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap" style="position:relative; z-index:2;">
+      <div class="badge">配信者・VTuber向け｜お試し切り抜き</div>
+      <h1>配信の面白い瞬間を<br>ワンコインでShort化します。</h1>
+      <p class="lead">切り抜きたいシーンを指定するだけ。15秒〜60秒のショート動画として、字幕と簡易SEを入れて見やすく整えます。</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="#order">申し込み内容を見る</a>
+        <a class="btn btn-sub" href="#price">料金を見る</a>
+      </div>
+      <div class="note">※秒数指定はできません。素材内容に合わせて15秒〜60秒の範囲で調整します。</div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <h2>こんな方におすすめです</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>Shortを出したい</h3>
+            <p>配信の見どころをショート動画にしたいけど、自分で編集する時間がない方向けです。</p>
+          </div>
+          <div class="card">
+            <h3>まず1本試したい</h3>
+            <p>高額な編集依頼の前に、まずは低価格で切り抜き動画を試したい方に向いています。</p>
+          </div>
+          <div class="card">
+            <h3>シンプルでいい</h3>
+            <p>派手なエフェクトより、テンポ・字幕・簡易SEで見やすく仕上げたい方向けです。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="price">
+      <div class="wrap">
+        <h2>料金</h2>
+        <div class="price-box">
+          <p class="price">500円</p>
+          <p><strong>15秒〜60秒のShort向け切り抜き動画を1本制作します。</strong></p>
+          <ul class="list">
+            <li>字幕入れ</li>
+            <li>簡易SE</li>
+            <li>不要部分のカット</li>
+            <li>ショート向けのテンポ調整</li>
+            <li>切り抜きシーン指定込み</li>
+          </ul>
+          <div class="warning">
+            対応範囲はシンプル編集です。派手なエフェクト、複雑な演出、サムネイル制作、フル演出編集は含まれません。<br><br>
+            ※Short動画の秒数指定はできません。<br>
+            ※アーカイブの切り抜き位置は依頼者側でご指定ください。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>納品までの流れ</h2>
+        <div class="steps">
+          <div class="step">
+            <div>
+              <h3>配信URLと切り抜きたい時間を送信</h3>
+              <p>例：12分30秒〜13分20秒あたり、など。大まかな指定でも大丈夫です。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>内容確認後、お支払い案内</h3>
+              <p>内容確認後、PayPayまたは銀行振込のご案内をお送りします。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>お支払い確認後、制作開始</h3>
+              <p>素材内容を確認し、Short向けに使いやすい長さへ調整します。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>動画データを納品</h3>
+              <p>完成した動画を確認いただき、投稿に使える形でお渡しします。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>サンプル動画</h2>
+        
+
+        <div style="display:flex; gap:18px; overflow-x:auto; padding-bottom:10px; scroll-snap-type:x mandatory;">
+          <div class="card" style="min-width:220px; max-width:220px; padding:12px; scroll-snap-align:start;">
+            <iframe width="100%" height="390" src="https://www.youtube.com/embed/f3ruGi3U5yk" title="Sample Video 1" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
+          </div>
+
+          <div class="card" style="min-width:220px; max-width:220px; padding:12px; scroll-snap-align:start;">
+            <iframe width="100%" height="390" src="https://www.youtube.com/embed/6tf_vomZPNY" title="Sample Video 2" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
+          </div>
+
+          <div class="card" style="min-width:220px; max-width:220px; padding:12px; scroll-snap-align:start;">
+            <iframe width="100%" height="390" src="https://www.youtube.com/embed/h-mrCTlm8QI" title="Sample Video 3" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>注意事項</h2>
+        <div class="card">
+          <ul class="list">
+            <li>秒数の細かい指定はできません。15秒〜60秒の範囲で調整します。</li>
+            <li>切り抜き元の配信・動画の使用許可は依頼者側でご確認ください。</li>
+            <li>公序良俗に反する内容や権利上問題がある素材はお受けできません。</li>
+            <li>実績掲載可能な方を優先して対応します。</li>
+            <li>修正は軽微な範囲のみ対応します。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>よくある質問</h2>
+        <div class="faq">
+          <details>
+            <summary>切り抜き箇所をお任せできますか？</summary>
+            <p>追加オプション「切り抜き箇所お任せ」を選択いただくことで対応可能です。</p>
+          </details>
+          <details>
+            <summary>ゲーム配信でも対応できますか？</summary>
+            <p>対応可能です。雑談、ゲーム配信、企画配信など、Shortにしやすい場面を編集します。</p>
+          </details>
+          <details>
+            <summary>字幕は全部入りますか？</summary>
+            <p>基本は見やすさ重視の字幕です。フルテロップに近い形を希望する場合は事前にご相談ください。</p>
+          </details>
+          <details>
+            <summary>納期はどれくらいですか？</summary>
+            <p>依頼状況により変動します。申し込み時に目安をお伝えします。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="card" style="text-align:center;">
+          <h2>Xで無償企画も実施中</h2>
+          <p>
+            Xでは定期的に、無償切り抜き企画も実施しています。<br>
+            「まずは試してみたい」「どんな編集か見てみたい」という方向けに、
+            抽選形式で制作を行っています。
+          </p>
+          <div class="cta-row" style="justify-content:center; margin-top:20px;">
+            <a class="btn btn-sub" href="https://x.com/matsun0819" target="_blank" rel="noopener">Xをチェックする</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="order">
+      <div class="wrap">
+        <div class="form-box">
+          <h2>申し込みはこちら</h2>
+          <p>依頼フォームから必要事項を送信してください。事前相談はXまたはメールでも可能です。</p>
+          
+          <div class="cta-row" style="margin-top:22px;">
+            <a class="btn btn-main" href="https://docs.google.com/forms/d/e/1FAIpQLSclQsJ6KO_qbNfgd0a8cciH56cWi0NTeCi_ap_w7zxEOIYbVA/viewform" target="_blank" rel="noopener">依頼フォームはこちら</a>
+            <a class="btn btn-sub" href="https://x.com/matsun0819" target="_blank" rel="noopener">Xで相談する</a>
+            <a class="btn btn-sub" href="mailto:NextFeed456@outlook.com">メールで相談する</a>
+          </div>
+          <p class="small">Googleフォームから依頼内容を送信後、内容確認のうえご連絡いたします。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© NextFeed</p>
+      <p>
+        <a href="https://nextfeed456.github.io/privacy/">プライバシーポリシー</a> ｜
+        <a href="https://nextfeed456.github.io/contact/">問い合わせ</a> ｜
+        <a href="https://nextfeed456.github.io/about/">運営者情報</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
