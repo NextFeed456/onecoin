@@ -18,7 +18,7 @@
     .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
     header {
       position: relative;
-      background: linear-gradient(135deg, rgba(2,6,23,.88), rgba(15,23,42,.92)), url('05443f11-e00c-44cc-b45b-23bedb9a2f04.png') center/cover no-repeat;
+      background: linear-gradient(135deg, rgba(2,6,23,.88), rgba(15,23,42,.92)), url('nextfeed-header.jpg') center/cover no-repeat;
       color: #fff;
       padding: 90px 0 80px;
       overflow: hidden;
@@ -135,7 +135,33 @@
       margin-top: 18px;
       font-size: 14px;
     }
+    .sample-slider {
+      display:flex;
+      gap:18px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .sample-card {
+      width:220px;
+      padding:12px;
+      background:#111827;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;
+      flex-shrink:0;
+    }
+
     @media (max-width: 760px) {
+      .sample-slider {
+        overflow-x:auto;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        scroll-snap-type:x mandatory;
+        padding-bottom:10px;
+      }
+      .sample-card {
+        scroll-snap-align:start;
+      }
+
       .cards { grid-template-columns: 1fr; }
       section { padding: 42px 0; }
       .step { grid-template-columns: 1fr; }
@@ -145,9 +171,9 @@
 <body>
   <header>
     <div class="wrap" style="position:relative; z-index:2;">
-      <div class="badge">配信者・VTuber向け｜お試し切り抜き</div>
-      <h1>配信の面白い瞬間を<br>ワンコインでShort化します。</h1>
-      <p class="lead">切り抜きたいシーンを指定するだけ。15秒〜60秒のショート動画として、字幕と簡易SEを入れて見やすく整えます。</p>
+      <div class="badge">VTuber応援キャンペーン｜大手・個人問わず受付中</div>
+      <h1>VTuber配信の面白い瞬間を<br>ワンコインでShort化します。</h1>
+      <p class="lead">大手・個人問わず、VTuber配信の切り抜きたいシーンを指定するだけ。15秒〜60秒のショート動画として、フルテロップと簡易SEを入れて見やすく整えます。</p>
       <div class="cta-row">
         <a class="btn btn-main" href="#order">申し込み内容を見る</a>
         <a class="btn btn-sub" href="#price">料金を見る</a>
@@ -162,16 +188,16 @@
         <h2>こんな方におすすめです</h2>
         <div class="cards">
           <div class="card">
-            <h3>Shortを出したい</h3>
-            <p>配信の見どころをショート動画にしたいけど、自分で編集する時間がない方向けです。</p>
+            <h3>収益化したけど伸び悩んでいる</h3>
+            <p>広告収益は始まったけど、編集コストや作業時間が重く、Short展開まで手が回らないVTuber向けです。</p>
           </div>
           <div class="card">
-            <h3>まず1本試したい</h3>
-            <p>高額な編集依頼の前に、まずは低価格で切り抜き動画を試したい方に向いています。</p>
+            <h3>切り抜きを増やしたい</h3>
+            <p>配信アーカイブはあるけど、切り抜き投稿まで追いつかない方に向いています。</p>
           </div>
           <div class="card">
-            <h3>シンプルでいい</h3>
-            <p>派手なエフェクトより、テンポ・字幕・簡易SEで見やすく仕上げたい方向けです。</p>
+            <h3>コストを抑えて継続したい</h3>
+            <p>高額編集ではなく、まずは低コストで継続的にShort投稿を増やしたいVTuber向けです。</p>
           </div>
         </div>
       </div>
@@ -184,16 +210,43 @@
           <p class="price">500円</p>
           <p><strong>15秒〜60秒のShort向け切り抜き動画を1本制作します。</strong></p>
           <ul class="list">
-            <li>字幕入れ</li>
-            <li>簡易SE</li>
+            <li>フルテロップ対応</li>
+            <li>簡易SE挿入</li>
+            <li>BGM有り・無し選択OK</li>
             <li>不要部分のカット</li>
             <li>ショート向けのテンポ調整</li>
+            <li>継続依頼OK</li>
             <li>切り抜きシーン指定込み</li>
           </ul>
           <div class="warning">
             対応範囲はシンプル編集です。派手なエフェクト、複雑な演出、サムネイル制作、フル演出編集は含まれません。<br><br>
             ※Short動画の秒数指定はできません。<br>
             ※アーカイブの切り抜き位置は依頼者側でご指定ください。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>オプション</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>切り抜き箇所お任せ</h3>
+            <p style="font-size:28px; font-weight:800; color:#22c55e; margin:8px 0;">+500円</p>
+            <p>配信内容を確認し、Short向けに切り抜き箇所をこちらで選定します。</p>
+          </div>
+
+          <div class="card">
+            <h3>演出強化</h3>
+            <p style="font-size:28px; font-weight:800; color:#22c55e; margin:8px 0;">+500円</p>
+            <p>ズーム・SE追加・素材挿入など、Short向けの演出を強化します。</p>
+          </div>
+
+          <div class="card">
+            <h3>最優先制作</h3>
+            <p style="font-size:28px; font-weight:800; color:#22c55e; margin:8px 0;">+1000円</p>
+            <p>通常より優先して制作を行います。24時間以内目安で対応します。</p>
           </div>
         </div>
       </div>
@@ -234,19 +287,18 @@
     <section>
       <div class="wrap">
         <h2>サンプル動画</h2>
-        
-
-        <div style="display:flex; gap:18px; overflow-x:auto; padding-bottom:10px; scroll-snap-type:x mandatory;">
-          <div class="card" style="min-width:220px; max-width:220px; padding:12px; scroll-snap-align:start;">
-            <iframe width="100%" height="390" src="https://www.youtube.com/embed/f3ruGi3U5yk" title="Sample Video 1" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
+        <div class="sample-slider">
+          <div class="sample-card">
+            <iframe width="100%" height="360" src="https://www.youtube.com/embed/f3ruGi3U5yk" title="Sample Video 1" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
           </div>
-
-          <div class="card" style="min-width:220px; max-width:220px; padding:12px; scroll-snap-align:start;">
-            <iframe width="100%" height="390" src="https://www.youtube.com/embed/6tf_vomZPNY" title="Sample Video 2" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
+          <div class="sample-card">
+            <iframe width="100%" height="360" src="https://www.youtube.com/embed/6tf_vomZPNY" title="Sample Video 2" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
           </div>
-
-          <div class="card" style="min-width:220px; max-width:220px; padding:12px; scroll-snap-align:start;">
-            <iframe width="100%" height="390" src="https://www.youtube.com/embed/h-mrCTlm8QI" title="Sample Video 3" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
+          <div class="sample-card">
+            <iframe width="100%" height="360" src="https://www.youtube.com/embed/h-mrCTlm8QI" title="Sample Video 3" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
+          </div>
+          <div class="sample-card">
+            <iframe width="100%" height="360" src="https://www.youtube.com/embed/7yOC0cBIGMA" title="Sample Video 4" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
           </div>
         </div>
       </div>
@@ -260,16 +312,17 @@
             <li>秒数の細かい指定はできません。15秒〜60秒の範囲で調整します。</li>
             <li>切り抜き元の配信・動画の使用許可は依頼者側でご確認ください。</li>
             <li>公序良俗に反する内容や権利上問題がある素材はお受けできません。</li>
-            <li>実績掲載可能な方を優先して対応します。</li>
+            
             <li>修正は軽微な範囲のみ対応します。</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section>
+    <details style="margin:56px auto; max-width:980px;">
+      <summary style="font-size:28px;">よくある質問</summary>
+      <section>
       <div class="wrap">
-        <h2>よくある質問</h2>
         <div class="faq">
           <details>
             <summary>切り抜き箇所をお任せできますか？</summary>
@@ -281,7 +334,7 @@
           </details>
           <details>
             <summary>字幕は全部入りますか？</summary>
-            <p>基本は見やすさ重視の字幕です。フルテロップに近い形を希望する場合は事前にご相談ください。</p>
+            <p>基本的にフルテロップ対応となります。視認性を重視し、Short向けに読みやすく調整します。</p>
           </details>
           <details>
             <summary>納期はどれくらいですか？</summary>
@@ -290,6 +343,7 @@
         </div>
       </div>
     </section>
+    </details>
 
     <section>
       <div class="wrap">
