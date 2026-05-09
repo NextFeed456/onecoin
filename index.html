@@ -138,11 +138,22 @@
     .sample-slider {
       display:flex;
       gap:18px;
-      justify-content:center;
-      flex-wrap:wrap;
+      overflow-x:auto;
+      flex-wrap:nowrap;
+      scroll-snap-type:x mandatory;
+      padding-bottom:10px;
+      -webkit-overflow-scrolling:touch;
+    }
+    .sample-slider::-webkit-scrollbar {
+      height:8px;
+    }
+    .sample-slider::-webkit-scrollbar-thumb {
+      background:rgba(255,255,255,.18);
+      border-radius:999px;
     }
     .sample-card {
       width:220px;
+      min-width:220px;
       padding:12px;
       background:#111827;
       border:1px solid rgba(255,255,255,.08);
@@ -152,11 +163,7 @@
 
     @media (max-width: 760px) {
       .sample-slider {
-        overflow-x:auto;
-        flex-wrap:nowrap;
         justify-content:flex-start;
-        scroll-snap-type:x mandatory;
-        padding-bottom:10px;
       }
       .sample-card {
         scroll-snap-align:start;
@@ -171,14 +178,18 @@
 <body>
   <header>
     <div class="wrap" style="position:relative; z-index:2;">
-      <div class="badge">VTuber応援キャンペーン｜大手・個人問わず受付中</div>
-      <h1>VTuber配信の面白い瞬間を<br>ワンコインでShort化します。</h1>
-      <p class="lead">大手・個人問わず、VTuber配信の切り抜きたいシーンを指定するだけ。15秒〜60秒のショート動画として、フルテロップと簡易SEを入れて見やすく整えます。</p>
-      <div class="cta-row">
-        <a class="btn btn-main" href="#order">申し込み内容を見る</a>
+      <div class="badge">500円で配信を切り抜ける｜配信者向けワンコインプラン</div>
+      <h1>ワンコインで、<br>あなたの配信を切り抜きます。</h1>
+      <p class="lead"><strong style="color:#fff; font-size:20px;">あなたのアーカイブ、眠ったままになってませんか？</strong><br><br>収益化したけど、Short投稿まで手が回らない。<br>そんな配信者向けに、配信の面白いシーンをShort向けに編集します。<br><br><span style="font-size:15px; color:#cbd5e1;">個人勢・企業勢問わず依頼可能です。<br>Short投稿を増やしたい方にもおすすめです。</span></p>
+      <div class="cta-row" style="margin-top:24px; justify-content:flex-start;">
+        <a class="btn btn-main" href="#order">作成を依頼する</a>
         <a class="btn btn-sub" href="#price">料金を見る</a>
       </div>
       <div class="note">※秒数指定はできません。素材内容に合わせて15秒〜60秒の範囲で調整します。</div>
+      <div class="card" style="max-width:420px; margin-top:22px; background:#111827; border:1px solid rgba(255,255,255,.08);">
+        <strong style="color:#22c55e;">🟢 現在受付中</strong><br>
+        通常納期：3〜5日程度
+      </div>
     </div>
   </header>
 
@@ -188,16 +199,16 @@
         <h2>こんな方におすすめです</h2>
         <div class="cards">
           <div class="card">
-            <h3>収益化したけど伸び悩んでいる</h3>
-            <p>広告収益は始まったけど、編集コストや作業時間が重く、Short展開まで手が回らないVTuber向けです。</p>
+            <h3>収益化したけどShortまで回らない</h3>
+            <p>配信はしているけど、切り抜き編集やShort投稿まで手が回らない方向けです。</p>
           </div>
           <div class="card">
-            <h3>切り抜きを増やしたい</h3>
-            <p>配信アーカイブはあるけど、切り抜き投稿まで追いつかない方に向いています。</p>
+            <h3>配信をもっと見つけてもらいたい</h3>
+            <p>アーカイブだけでは届きにくい配信を、Shortとして見つけてもらいやすくします。</p>
           </div>
           <div class="card">
-            <h3>コストを抑えて継続したい</h3>
-            <p>高額編集ではなく、まずは低コストで継続的にShort投稿を増やしたいVTuber向けです。</p>
+            <h3>まずは低コストで試したい</h3>
+            <p>いきなり高額編集を頼むのは不安。そんな方向けにワンコイン価格で受付しています。</p>
           </div>
         </div>
       </div>
@@ -215,13 +226,11 @@
             <li>BGM有り・無し選択OK</li>
             <li>不要部分のカット</li>
             <li>ショート向けのテンポ調整</li>
-            <li>継続依頼OK</li>
-            <li>切り抜きシーン指定込み</li>
+            
           </ul>
           <div class="warning">
-            対応範囲はシンプル編集です。派手なエフェクト、複雑な演出、サムネイル制作、フル演出編集は含まれません。<br><br>
-            ※Short動画の秒数指定はできません。<br>
-            ※アーカイブの切り抜き位置は依頼者側でご指定ください。
+            対応範囲はシンプル編集です。<br>
+            派手なエフェクト、複雑な演出、サムネイル制作、フル演出編集は含まれません。
           </div>
         </div>
       </div>
@@ -255,26 +264,30 @@
     <section>
       <div class="wrap">
         <h2>納品までの流れ</h2>
-        <div class="steps">
-          <div class="step">
+        <div class="steps" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+          <div class="step" style="text-align:center; grid-template-columns:1fr;">
+            <div style="font-size:42px;">📩</div>
             <div>
               <h3>配信URLと切り抜きたい時間を送信</h3>
               <p>例：12分30秒〜13分20秒あたり、など。大まかな指定でも大丈夫です。</p>
             </div>
           </div>
-          <div class="step">
+          <div class="step" style="text-align:center; grid-template-columns:1fr;">
+            <div style="font-size:42px;">💰</div>
             <div>
               <h3>内容確認後、お支払い案内</h3>
               <p>内容確認後、PayPayまたは銀行振込のご案内をお送りします。</p>
             </div>
           </div>
-          <div class="step">
+          <div class="step" style="text-align:center; grid-template-columns:1fr;">
+            <div style="font-size:42px;">✂️</div>
             <div>
               <h3>お支払い確認後、制作開始</h3>
               <p>素材内容を確認し、Short向けに使いやすい長さへ調整します。</p>
             </div>
           </div>
-          <div class="step">
+          <div class="step" style="text-align:center; grid-template-columns:1fr;">
+            <div style="font-size:42px;">🎬</div>
             <div>
               <h3>動画データを納品</h3>
               <p>完成した動画を確認いただき、投稿に使える形でお渡しします。</p>
@@ -284,10 +297,11 @@
       </div>
     </section>
 
-    <section>
-      <div class="wrap">
-        <h2>サンプル動画</h2>
-        <div class="sample-slider">
+    <details style="margin:56px auto; max-width:980px;">
+      <summary style="font-size:28px;">サンプル動画を見る</summary>
+      <section>
+        <div class="wrap">
+          <div class="sample-slider">
           <div class="sample-card">
             <iframe width="100%" height="360" src="https://www.youtube.com/embed/f3ruGi3U5yk" title="Sample Video 1" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
           </div>
@@ -300,9 +314,28 @@
           <div class="sample-card">
             <iframe width="100%" height="360" src="https://www.youtube.com/embed/7yOC0cBIGMA" title="Sample Video 4" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
           </div>
+          <div class="sample-card">
+            <iframe width="100%" height="360" src="https://www.youtube.com/embed/nTMX9oxnbH8" title="Sample Video 5" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
+          </div>
+          <div class="sample-card">
+            <iframe width="100%" height="360" src="https://www.youtube.com/embed/PmktCgldxf8" title="Sample Video 6" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
+          </div>
+          <div class="sample-card">
+            <iframe width="100%" height="360" src="https://www.youtube.com/embed/bvYRVyvw01g" title="Sample Video 7" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
+          </div>
+          <div class="sample-card">
+            <iframe width="100%" height="360" src="https://www.youtube.com/embed/K2iK8tR_Rhs" title="Sample Video 8" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
+          </div>
+          <div class="sample-card">
+            <iframe width="100%" height="360" src="https://www.youtube.com/embed/lly7uyil7sU" title="Sample Video 9" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
+          </div>
+          <div class="sample-card">
+            <iframe width="100%" height="360" src="https://www.youtube.com/embed/DC2pvPptuek" title="Sample Video 10" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
+          </div>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </details>
 
     <section>
       <div class="wrap">
@@ -313,7 +346,7 @@
             <li>切り抜き元の配信・動画の使用許可は依頼者側でご確認ください。</li>
             <li>公序良俗に反する内容や権利上問題がある素材はお受けできません。</li>
             
-            <li>修正は軽微な範囲のみ対応します。</li>
+            <li>修正は1回まで対応します。（テロップミスは回数に含みません）</li>
           </ul>
         </div>
       </div>
@@ -338,7 +371,11 @@
           </details>
           <details>
             <summary>納期はどれくらいですか？</summary>
-            <p>依頼状況により変動します。申し込み時に目安をお伝えします。</p>
+            <p>通常は3〜5日程度で納品しています。依頼状況によって変動する場合があります。</p>
+          </details>
+          <details>
+            <summary>なぜ500円なんですか？</summary>
+            <p>現在は配信者応援キャンペーンとして、実績制作とサービス拡大を目的に低価格で受付しています。今後、受付状況により価格を変更する場合があります。</p>
           </details>
         </div>
       </div>
@@ -347,15 +384,25 @@
 
     <section>
       <div class="wrap">
-        <div class="card" style="text-align:center;">
-          <h2>Xで無償企画も実施中</h2>
-          <p>
-            Xでは定期的に、無償切り抜き企画も実施しています。<br>
-            「まずは試してみたい」「どんな編集か見てみたい」という方向けに、
-            抽選形式で制作を行っています。
-          </p>
-          <div class="cta-row" style="justify-content:center; margin-top:20px;">
-            <a class="btn btn-sub" href="https://x.com/matsun0819" target="_blank" rel="noopener">Xをチェックする</a>
+        <h2>実際にいただいた感想</h2>
+        <div class="cards">
+          <div class="card">
+            <p>「切り抜き作っていただくの初めてで凄く感激です…！」</p>
+          </div>
+          <div class="card">
+            <p>「500円でこんなにしてもらえるんですね…！<br>完璧すぎます！」</p>
+          </div>
+          <div class="card">
+            <p>「テンポよく切り抜いて下さり、<br>自分の配信なのに面白くてずっと見ちゃいます😂」</p>
+          </div>
+          <div class="card">
+            <p>「編集神すぎて<br>びっくりしました！！！！！！」</p>
+          </div>
+          <div class="card">
+            <p>「すごくかわいく切り抜いていただきありがとうございます！<br>修正ございません！」</p>
+          </div>
+          <div class="card">
+            <p>「とてもかわいらしく作成いただき誠にありがとうございます。<br>大変満足しております！」</p>
           </div>
         </div>
       </div>
@@ -363,16 +410,110 @@
 
     <section id="order">
       <div class="wrap">
-        <div class="form-box">
-          <h2>申し込みはこちら</h2>
-          <p>依頼フォームから必要事項を送信してください。事前相談はXまたはメールでも可能です。</p>
-          
-          <div class="cta-row" style="margin-top:22px;">
-            <a class="btn btn-main" href="https://docs.google.com/forms/d/e/1FAIpQLSclQsJ6KO_qbNfgd0a8cciH56cWi0NTeCi_ap_w7zxEOIYbVA/viewform" target="_blank" rel="noopener">依頼フォームはこちら</a>
-            <a class="btn btn-sub" href="https://x.com/matsun0819" target="_blank" rel="noopener">Xで相談する</a>
-            <a class="btn btn-sub" href="mailto:NextFeed456@outlook.com">メールで相談する</a>
+        <div class="form-box" style="border:1px solid rgba(255,255,255,.12); box-shadow:0 10px 28px rgba(0,0,0,.28);">
+          <div class="cta-row" style="margin-bottom:22px; justify-content:center;">
+            <button class="btn btn-main" type="button">依頼フォーム</button>
           </div>
-          <p class="small">Googleフォームから依頼内容を送信後、内容確認のうえご連絡いたします。</p>
+
+          <div style="text-align:center;">
+            <h2>ワンコイン切り抜き｜依頼フォーム</h2>
+          </div>
+
+          <form action="https://formsubmit.co/NextFeed456@outlook.com" method="POST" style="margin-top:22px; display:grid; gap:16px;">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://nextfeed456.github.io/thanks.html">
+            <input type="hidden" name="_subject" id="dynamicSubject" value="ワンコイン切り抜き依頼">
+
+            <div>
+              <label style="display:block; margin-bottom:6px; font-weight:700;">活動名 <span style="color:#fdba74;">必須</span></label>
+              <input type="text" name="name" placeholder="活動名" required style="width:100%; padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#0f172a; color:#fff;">
+            </div>
+
+            <div>
+              <label style="display:block; margin-bottom:6px; font-weight:700;">依頼する動画本数 <span style="color:#fdba74;">必須</span></label>
+              <select name="count" required style="width:100%; padding:14px; border-radius:12px; background:#0f172a; color:#fff; border:1px solid rgba(255,255,255,.08);">
+                <option>1本</option>
+                <option>2本</option>
+                <option>3本</option>
+              </select>
+              <p class="small" style="margin:6px 0 0;">1度の依頼で最大3本まで。4本以上は事前にXまたはメールでご相談ください。</p>
+            </div>
+
+            <div>
+              <label style="display:block; margin-bottom:6px; font-weight:700;">切り抜きたい配信アーカイブ <span style="color:#fdba74;">必須</span></label>
+              <input type="text" name="archive" placeholder="配信アーカイブのURL" required style="width:100%; padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#0f172a; color:#fff;">
+            </div>
+
+            <div>
+              <label style="display:block; margin-bottom:6px; font-weight:700;">切り抜き位置 <span style="color:#fdba74;">必須</span></label>
+              <input type="text" name="time" placeholder="例：1:30:00からの○○のシーンをお願いします" required style="width:100%; padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#0f172a; color:#fff;">
+              <p class="small" style="margin:6px 0 0;">おまかせの場合は「おまかせ」とご記入ください。</p>
+            </div>
+
+            <div>
+              <label style="display:block; margin-bottom:6px; font-weight:700;">配信レイアウトの要望 <span style="color:#94a3b8; font-size:13px;">任意</span></label>
+              <textarea name="layout" placeholder="例：普段のShortに合わせたい、ロゴを入れてほしい等" rows="4" style="width:100%; padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#0f172a; color:#fff;"></textarea>
+            </div>
+
+            <details style="background:#0f172a; border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:14px;">
+              <summary>追加オプションを選択する <span style="color:#94a3b8; font-size:13px;">任意</span></summary>
+              <div style="display:grid; gap:8px; margin-top:12px;">
+                <label><input type="checkbox" name="option" value="切り抜き箇所お任せ（+500円）" data-price="500"> 切り抜き箇所お任せ（+500円 / 本）</label>
+                <label><input type="checkbox" name="option" value="演出強化（+500円）" data-price="500"> 演出強化（+500円 / 本）</label>
+                <label><input type="checkbox" name="option" value="最優先制作（+1000円）" data-price="1000"> 最優先制作（+1000円 / 本）</label>
+                <label><input type="checkbox" name="option" value="実績公開NG（+500円）" data-price="single500"> 実績公開NG（+500円）</label>
+                <label><input type="checkbox" name="option" value="アレンジ動画（+500円）" data-price="500"> アレンジ動画（雰囲気寄せ編集）（+500円 / 本）</label>
+              </div>
+            </details>
+
+            <div>
+              <label style="display:block; margin-bottom:6px; font-weight:700;">お支払方法 <span style="color:#fdba74;">必須</span></label>
+              <select name="payment" required style="width:100%; padding:14px; border-radius:12px; background:#0f172a; color:#fff; border:1px solid rgba(255,255,255,.08);">
+                <option>PayPay</option>
+                <option>振込</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="display:block; margin-bottom:6px; font-weight:700;">連絡方法 <span style="color:#fdba74;">必須</span></label>
+              <select name="contact_method" required style="width:100%; padding:14px; border-radius:12px; background:#0f172a; color:#fff; border:1px solid rgba(255,255,255,.08);">
+                <option>XのDM</option>
+                <option>メール</option>
+                <option>Discord</option>
+              </select>
+              <p class="small" style="margin:6px 0 0;">Xの場合は @matsun0819 から連絡しますので、フォローをお願いします。<br><a href="https://x.com/matsun0819" target="_blank" style="color:#93c5fd;">https://x.com/matsun0819</a></p>
+            </div>
+
+            <div>
+              <label style="display:block; margin-bottom:6px; font-weight:700;">X ID・メールアドレス・Discord IDなど <span style="color:#fdba74;">必須</span></label>
+              <input type="text" name="contact" placeholder="選択した連絡方法のID・アドレスをご記入ください" required style="width:100%; padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#0f172a; color:#fff;">
+            </div>
+
+            <div class="warning">
+              ・お支払い確認後に制作開始となります。<br>
+              ・制作するShortの秒数指定はできません。<br>
+              ・修正は軽微な内容のみ対応となります。<br>
+              ・実績として公開させていただく場合があります。<br>
+              ・実績公開NGの場合は+500円となります。
+            </div>
+
+            <input type="hidden" name="estimated_total" id="estimatedTotalInput" value="500円">
+            <div class="price-box" style="padding:18px; border-width:1px;">
+              <strong>想定金額</strong><br>
+              <span id="estimatedTotal" style="font-size:32px; font-weight:900; color:#22c55e;">500円</span>
+              <p class="small" style="margin:6px 0 0;">本数と選択オプションをもとにした目安です。正式な金額は内容確認後にご案内します。</p>
+            </div>
+
+            <button class="btn btn-main" type="submit">依頼内容を送信</button>
+
+            <div style="text-align:center; margin-top:12px;">
+              <p class="small">相談・見積もりは以下からどうぞ</p>
+              <div class="cta-row" style="justify-content:center; margin-top:12px;">
+                <a class="btn btn-sub" href="https://x.com/matsun0819" target="_blank">Xで相談する</a>
+                <a class="btn btn-sub" href="mailto:NextFeed456@outlook.com">メールで相談する</a>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </section>
@@ -388,5 +529,46 @@
       </p>
     </div>
   </footer>
+<script>
+  const countSelect = document.querySelector('select[name="count"]');
+  const optionChecks = document.querySelectorAll('input[name="option"]');
+  const totalEl = document.getElementById('estimatedTotal');
+  const totalInput = document.getElementById('estimatedTotalInput');
+  const dynamicSubject = document.getElementById('dynamicSubject');
+  const nameInput = document.querySelector('input[name="name"]');
+
+  function updateEstimatedTotal() {
+    const countText = countSelect ? countSelect.value : '1本';
+    const count = parseInt(countText, 10) || 1;
+    let total = count * 500;
+
+    optionChecks.forEach((check) => {
+      if (check.checked) {
+        const rawPrice = check.dataset.price || '0';
+        if (rawPrice === 'single500') {
+          total += 500;
+        } else {
+          const price = Number(rawPrice || 0);
+          const isPerVideo = !check.value.includes('実績公開NG');
+          total += isPerVideo ? price * count : price;
+        }
+      }
+    });
+
+    const formatted = total.toLocaleString('ja-JP') + '円';
+    if (totalEl) totalEl.textContent = formatted;
+    if (totalInput) totalInput.value = formatted;
+
+    if (dynamicSubject && nameInput) {
+      const creatorName = nameInput.value || '未入力';
+      dynamicSubject.value = `ワンコイン切り抜き：${creatorName}`;
+    }
+  }
+
+  if (countSelect) countSelect.addEventListener('change', updateEstimatedTotal);
+  optionChecks.forEach((check) => check.addEventListener('change', updateEstimatedTotal));
+  if (nameInput) nameInput.addEventListener('input', updateEstimatedTotal);
+  updateEstimatedTotal();
+</script>
 </body>
 </html>
