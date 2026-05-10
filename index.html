@@ -287,7 +287,122 @@ grid-template-columns:1fr 1fr !important;
 
 }
 
-@media(max-width:768px){$1
+@media(max-width:768px){
+
+body{
+overflow-x:hidden;
+}
+
+.container{
+padding:0 14px;
+}
+
+.hero-buttons-overlay{
+left:14px !important;
+right:14px !important;
+bottom:14px !important;
+flex-direction:column;
+gap:12px !important;
+}
+
+.hero-buttons-overlay a{
+width:100%;
+font-size:20px !important;
+padding:16px 18px !important;
+text-align:center;
+justify-content:center;
+}
+
+.section-title{
+font-size:28px !important;
+white-space:normal !important;
+line-height:1.5 !important;
+padding:0 6px;
+}
+
+.section-sub{
+font-size:16px !important;
+line-height:1.9 !important;
+padding:0 4px;
+}
+
+.features{
+grid-template-columns:1fr !important;
+gap:18px !important;
+}
+
+.feature-card{
+min-height:auto !important;
+padding:32px 20px !important;
+}
+
+.price-mobile-grid{
+grid-template-columns:1fr !important;
+}
+
+.price-mobile-grid > div{
+border-right:none !important;
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.step-grid{
+grid-template-columns:1fr !important;
+}
+
+.step-grid > div{
+padding:24px 16px !important;
+}
+
+.step-grid p{
+font-size:18px !important;
+line-height:1.6 !important;
+}
+
+.step-grid h4{
+font-size:24px !important;
+}
+
+.cta .container > div:first-child{
+grid-template-columns:1fr !important;
+}
+
+.cta .container > div:last-child{
+grid-template-columns:1fr !important;
+}
+
+#price-detail .container > div:first-of-type{
+grid-template-columns:1fr !important;
+}
+
+#price-detail .container > div:nth-of-type(2){
+padding:24px !important;
+}
+
+#form{
+padding:34px 18px !important;
+}
+
+#form h3{
+font-size:36px !important;
+}
+
+#form form > div{
+padding:18px !important;
+}
+
+#estimated-price{
+font-size:48px !important;
+}
+
+.button-group{
+flex-direction:column;
+}
+
+.btn-main,
+.btn-sub{
+width:100%;
+}
+
 
 .step-grid{
 grid-template-columns:1fr !important;
@@ -305,32 +420,6 @@ word-break:keep-all;
 
 .step-grid h4{
 font-size:28px !important;
-}
-
-.cta .container > div:last-child{!important;
-letter-spacing:-2px !important;
-}
-
-.price-mobile-grid h3{
-font-size:24px !important;
-}
-
-.price-mobile-grid p{
-font-size:24px !important;
-}
-
-.cta .container > div:first-child{
-grid-template-columns:1fr !important;
-padding:24px !important;
-}
-
-.cta h2{
-font-size:30px !important;
-}
-
-.cta a{
-font-size:20px !important;
-padding:18px 16px !important;
 }
 
 .cta .container > div:last-child{
