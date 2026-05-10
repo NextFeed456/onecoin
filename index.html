@@ -888,19 +888,19 @@ STEP 3
 </p>
 
 <form action="https://formsubmit.co/NextFeed456@outlook.com" method="POST" style="display:flex;flex-direction:column;gap:30px;max-width:920px;margin:auto;position:relative;z-index:2;">
-<input type="hidden" name="_subject" value="ワンコイン切り抜き依頼">
+<input type="hidden" id="dynamic-subject" name="_subject" value="ワンコイン切り抜き：未入力">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_next" value="https://nextfeed456.github.io/onecoin/thanks.html">
 
 <div style="background:rgba(255,255,255,.04);padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);">
 <label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">👤 活動名 <span style="color:#fb923c;">必須</span></label>
-<input type="text" placeholder="活動名" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
+<input type="text" name="活動名" placeholder="活動名" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
 </div>
 
 <div style="background:rgba(255,255,255,.04);padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);">
 <label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">🎬 依頼する動画本数 <span style="color:#fb923c;">必須</span></label>
-<select style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
+<select name="依頼本数" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
 <option>1本</option>
 <option>2本</option>
 <option>3本</option>
@@ -910,12 +910,12 @@ STEP 3
 
 <div style="background:rgba(255,255,255,.04);padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);">
 <label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">📺 切り抜きたい配信アーカイブ <span style="color:#fb923c;">必須</span></label>
-<input type="text" placeholder="配信アーカイブのURL" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
+<input type="text" name="配信アーカイブURL" placeholder="配信アーカイブのURL" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
 </div>
 
 <div style="background:rgba(255,255,255,.04);padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);">
 <label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">✂ 切り抜き位置 <span style="color:#fb923c;">必須</span></label>
-<textarea id="clip-position-input" placeholder="例：1:30:00からの○○のシーンをお願いします" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;min-height:130px;background:#f7f0ff;color:#111;"></textarea>
+<textarea id="clip-position-input" name="切り抜き位置" placeholder="例：1:30:00からの○○のシーンをお願いします" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;min-height:130px;background:#f7f0ff;color:#111;"></textarea>
 
 <label style="display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;color:#d8c8ff;font-weight:700;cursor:pointer;">
 <input type="checkbox" id="omakase-check" style="transform:scale(1.2);accent-color:#8b5cf6;">
@@ -942,7 +942,7 @@ clipInput.style.opacity = '1';
 
 <div style="background:rgba(255,255,255,.04);padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);">
 <label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">🎨 配信レイアウトの要望 任意</label>
-<textarea placeholder="例：普段のShortに合わせたい、ロゴを入れてほしい等" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;min-height:120px;background:#f7f0ff;color:#111;"></textarea>
+<textarea name="配信レイアウト要望" placeholder="例：普段のShortに合わせたい、ロゴを入れてほしい等" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;min-height:120px;background:#f7f0ff;color:#111;"></textarea>
 </div>
 
 <div>
@@ -960,7 +960,7 @@ clipInput.style.opacity = '1';
 
 <div>
 <label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">お支払方法 <span style="color:#fb923c;">必須</span></label>
-<select style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
+<select name="お支払方法" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
 <option>PayPay</option>
 <option>銀行振り込み</option>
 </select>
@@ -968,7 +968,7 @@ clipInput.style.opacity = '1';
 
 <div>
 <label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">連絡方法 <span style="color:#fb923c;">必須</span></label>
-<select style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
+<select name="連絡方法" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
 <option>XのDM</option>
 <option>Discord</option>
 <option>メール</option>
@@ -978,7 +978,7 @@ clipInput.style.opacity = '1';
 
 <div>
 <label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">X ID・メールアドレス・Discord IDなど <span style="color:#fb923c;">必須</span></label>
-<input type="text" placeholder="選択した連絡方法のID・アドレスをご記入ください" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
+<input type="text" name="連絡先" placeholder="選択した連絡方法のID・アドレスをご記入ください" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
 
 <label style="display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;color:#d8c8ff;font-weight:700;cursor:pointer;">
 <input type="checkbox" id="repeat-user-check" style="transform:scale(1.2);accent-color:#8b5cf6;">
@@ -1092,7 +1092,7 @@ const body = `【ワンコイン切り抜き依頼】%0D%0A%0D%0A`
 + `■ 連絡先%0D%0A${contactId}%0D%0A%0D%0A`
 + `■ 想定金額%0D%0A${estimatedPrice}%0D%0A`;
 
-document.querySelector('input[name="_subject"]').value = `ワンコイン切り抜き：${activityName}`;
+document.getElementById('dynamic-subject').value = `ワンコイン切り抜き：${activityName}`;
 });
 </script>
 
