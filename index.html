@@ -1182,7 +1182,7 @@ calculatePrice();
 document.querySelector('#form form').addEventListener('submit', () => {
 const inputs = document.querySelectorAll('#form input, #form textarea, #form select');
 
-const activityName = inputs[0].value || '未入力';
+const activityName = document.querySelector('input[name="活動名"]').value || '未入力';
 const quantity = inputs[1].value || '未入力';
 const archive = inputs[2].value || '未入力';
 const clipPosition = inputs[3].value || '未入力';
