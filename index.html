@@ -287,66 +287,27 @@ grid-template-columns:1fr 1fr !important;
 
 }
 
-@media(max-width:768px){
+@media(max-width:768px){$1
 
-.hero-buttons-overlay{
-position:static !important;
-display:flex !important;
-flex-direction:column !important;
-padding:20px;
-background:#d9c7f5;
-gap:14px !important;
+.step-grid{
+grid-template-columns:1fr !important;
 }
 
-.hero-buttons-overlay a{
-width:100%;
-justify-content:center;
-text-align:center;
+.step-grid > div{
+padding:24px 16px !important;
 }
 
-
-.features{
-grid-template-columns:1fr;
+.step-grid p{
+font-size:24px !important;
+line-height:1.5 !important;
+word-break:keep-all;
 }
 
-.section-title{
-font-size:36px;
+.step-grid h4{
+font-size:28px !important;
 }
 
-.section-sub{
-font-size:16px;
-margin-bottom:40px;
-}
-
-.price-mobile-grid{
-display:flex !important;
-flex-direction:column;
-
-gap:0;
-}
-
-.price-mobile-grid > div{
-border-right:none !important;
-border-bottom:1px solid rgba(255,255,255,.08);
-padding:28px 16px !important;
-width:100%;
-
-}
-
-.price-mobile-grid > div:nth-child(odd){
-border-right:none !important;
-}
-
-.price-mobile-grid > div:last-child{
-border-bottom:none !important;
-}
-
-.price-mobile-grid span{
-font-size:38px !important;
-}
-
-.price-mobile-grid div[style*='font-size:96px']{
-font-size:58px !important;
+.cta .container > div:last-child{!important;
 letter-spacing:-2px !important;
 }
 
@@ -523,7 +484,7 @@ grid-template-columns:1fr !important;
 ※切り抜き箇所おまかせは追加オプション（+500円/本）となります
 </p>
 
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+<div class="step-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
 
 <div style="background:#f7f0ff;border-radius:22px;padding:28px;text-align:center;border:1px solid #e6d6ff;">
 <div style="font-size:54px;margin-bottom:12px;">📩</div>
