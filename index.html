@@ -1179,7 +1179,7 @@ calculatePrice();
 </button>
 
 <script>
-document.getElementById('submit-request').addEventListener('click', () => {
+document.querySelector('#form form').addEventListener('submit', () => {
 const inputs = document.querySelectorAll('#form input, #form textarea, #form select');
 
 const activityName = inputs[0].value || '未入力';
