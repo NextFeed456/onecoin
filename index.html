@@ -1014,7 +1014,7 @@ STEP 3
 
 <div style="background:rgba(255,255,255,.04);padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);">
 <label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">👤 活動名 <span style="color:#fb923c;">必須</span></label>
-<input type="text" name="活動名" placeholder="活動名" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
+<input type="text" name="活動名" placeholder="活動名" required style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
 </div>
 
 <div style="background:rgba(255,255,255,.04);padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);">
@@ -1029,12 +1029,12 @@ STEP 3
 
 <div style="background:rgba(255,255,255,.04);padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);">
 <label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">📺 切り抜きたい配信アーカイブ <span style="color:#fb923c;">必須</span></label>
-<input type="text" name="配信アーカイブURL" placeholder="配信アーカイブのURL" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
+<input type="text" name="配信アーカイブURL" placeholder="配信アーカイブのURL" required style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
 </div>
 
 <div style="background:rgba(255,255,255,.04);padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);">
 <label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">✂ 切り抜き位置 <span style="color:#fb923c;">必須</span></label>
-<textarea id="clip-position-input" name="切り抜き位置" placeholder="例：1:30:00からの○○のシーンをお願いします" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;min-height:130px;background:#f7f0ff;color:#111;"></textarea>
+<textarea id="clip-position-input" name="切り抜き位置" required placeholder="例：1:30:00からの○○のシーンをお願いします" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;min-height:130px;background:#f7f0ff;color:#111;"></textarea>
 
 <label style="display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;color:#d8c8ff;font-weight:700;cursor:pointer;">
 <input type="checkbox"
@@ -1101,8 +1101,7 @@ clipInput.style.opacity = '1';
 
 <div>
 <label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">X ID・メールアドレス・Discord IDなど <span style="color:#fb923c;">必須</span></label>
-<input type="text" name="連絡先" placeholder="選択した連絡方法のID・アドレスをご記入ください" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
-
+<input type="text" name="連絡先" required placeholder="選択した連絡方法のID・アドレスをご記入ください" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
 <label style="display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;color:#d8c8ff;font-weight:700;cursor:pointer;">
 <input type="checkbox" id="repeat-user-check" style="transform:scale(1.2);accent-color:#8b5cf6;">
 以前やり取りをした事がある（入力不要）
