@@ -1069,11 +1069,11 @@ clipInput.style.opacity = '1';
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
 
 
-<label style="background:#221136;padding:16px;border-radius:16px;"><input type="checkbox"> 演出・エフェクト追加（+500円/本）</label>
-<label style="background:#221136;padding:16px;border-radius:16px;"><input type="checkbox"> アレンジ動画（雰囲気寄せ編集）（+500円/本）</label>
+<label style="background:#221136;padding:16px;border-radius:16px;"><input type="checkbox" class="price-option" name="演出・エフェクト追加"> 演出・エフェクト追加（+500円/本）</label>
+<label style="background:#221136;padding:16px;border-radius:16px;"><input type="checkbox" class="price-option" name="アレンジ動画"> アレンジ動画（雰囲気寄せ編集）（+500円/本）</label>
 
-<label style="background:#221136;padding:16px;border-radius:16px;"><input type="checkbox"> 最優先制作（+1000円/本）</label>
-<label style="background:#221136;padding:16px;border-radius:16px;"><input type="checkbox"> 実績掲載NG（+500円）</label>
+<label style="background:#221136;padding:16px;border-radius:16px;"><input type="checkbox" class="price-option" name="最優先制作"> 最優先制作（+1000円/本）</label>
+<label style="background:#221136;padding:16px;border-radius:16px;"><input type="checkbox" class="price-option" name="実績掲載NG"> 実績掲載NG（+500円）</label>
 </div>
 </div>
 
@@ -1140,13 +1140,18 @@ contactInput.style.opacity = '1';
 
 <script>
 const quantitySelect = document.querySelector('select');
-const optionCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+const optionCheckboxes = document.querySelectorAll('.price-option');
 const estimatedPrice = document.getElementById('estimated-price');
 
 function calculatePrice(){
 let basePrice = 500;
 let quantity = parseInt(quantitySelect.value);
 let total = basePrice * quantity;
+const omakase = document.getElementById('omakase-check');
+
+if(omakase.checked){
+total += 500 * quantity;
+}
 
 optionCheckboxes.forEach(box => {
 if(box.checked){
