@@ -1007,7 +1007,7 @@ STEP 3
 </p>
 
 <form action="https://formsubmit.co/NextFeed456@outlook.com" method="POST" style="display:flex;flex-direction:column;gap:30px;max-width:920px;margin:auto;position:relative;z-index:2;">
-<input type="hidden" id="dynamic-subject" name="_subject" value="ワンコイン切り抜き：未入力">
+<input type="hidden" id="dynamic-subject" name="_subject" value="ワンコイン切り抜き依頼">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_next" value="https://nextfeed456.github.io/onecoin/thanks.html">
@@ -1180,38 +1180,35 @@ calculatePrice();
 
 <script>
 document.querySelector('#form form').addEventListener('submit', () => {
-const inputs = document.querySelectorAll('#form input, #form textarea, #form select');
 
 const activityName = document.querySelector('input[name="活動名"]').value || '未入力';
-const quantity = inputs[1].value || '未入力';
-const archive = inputs[2].value || '未入力';
-const clipPosition = inputs[3].value || '未入力';
-const layoutRequest = inputs[4].value || 'なし';
-const paymentMethod = inputs[5].value || '未入力';
-const contactMethod = inputs[6].value || '未入力';
-const contactId = inputs[7].value || '未入力';
-
-const checkedOptions = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
-.map(box => '・' + box.parentElement.textContent.trim())
-.join('%0D%0A') || 'なし';
+const quantity = document.querySelector('select[name="依頼本数"]').value || '未入力';
+const archive = document.querySelector('input[name="配信アーカイブURL"]').value || '未入力';
+const clipPosition = document.querySelector('textarea[name="切り抜き位置"]').value || '未入力';
+const layoutRequest = document.querySelector('textarea[name="配信レイアウト要望"]').value || 'なし';
+const paymentMethod = document.querySelector('select[name="お支払方法"]').value || '未入力';
+const contactMethod = document.querySelector('select[name="連絡方法"]').value || '未入力';
+const contactId = document.querySelector('input[name="連絡先"]').value || '未入力';
 
 const estimatedPrice = document.getElementById('estimated-price').textContent;
 
-const subject = `ワンコイン切り抜き：${activityName}`;
+const checkedOptions = Array.from(
+  document.querySelectorAll('#form input[type="checkbox"]:checked')
+)
+.map(box => {
+  const text = box.parentElement.textContent.trim();
+  return '・' + text;
+})
+.join(' / ') || 'なし';
 
-const body = `【ワンコイン切り抜き依頼】%0D%0A%0D%0A`
-+ `■ 活動名%0D%0A${activityName}%0D%0A%0D%0A`
-+ `■ 依頼本数%0D%0A${quantity}%0D%0A%0D%0A`
-+ `■ 配信アーカイブURL%0D%0A${archive}%0D%0A%0D%0A`
-+ `■ 切り抜き位置%0D%0A${clipPosition}%0D%0A%0D%0A`
-+ `■ 配信レイアウトの要望%0D%0A${layoutRequest}%0D%0A%0D%0A`
-+ `■ 選択オプション%0D%0A${checkedOptions}%0D%0A%0D%0A`
-+ `■ お支払方法%0D%0A${paymentMethod}%0D%0A%0D%0A`
-+ `■ 連絡方法%0D%0A${contactMethod}%0D%0A%0D%0A`
-+ `■ 連絡先%0D%0A${contactId}%0D%0A%0D%0A`
-+ `■ 想定金額%0D%0A${estimatedPrice}%0D%0A`;
+const subject = `【${activityName}】${quantity}｜${estimatedPrice}`;
 
-document.getElementById('dynamic-subject').value = `ワンコイン切り抜き：${activityName}`;
+console.log(subject);
+
+// メール件名更新
+const subjectInput = document.getElementById('dynamic-subject');
+subjectInput.value = subject;
+
 });
 </script>
 
