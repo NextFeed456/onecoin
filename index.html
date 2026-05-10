@@ -1,575 +1,1122 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ワンコイン切り抜き｜配信の面白い瞬間をShort化</title>
-  <meta name="description" content="配信の面白いシーンを15秒〜60秒のShort向け動画に。字幕と簡易SE付きのワンコイン切り抜きサービスです。" />
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #e5e7eb;
-      background: #0f172a;
-      line-height: 1.8;
-    }
-    a { color: inherit; }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
-    header {
-      position: relative;
-      background: linear-gradient(135deg, rgba(2,6,23,.88), rgba(15,23,42,.92)), url('nextfeed-header.jpg') center/cover no-repeat;
-      color: #fff;
-      padding: 90px 0 80px;
-      overflow: hidden;
-    }
-    .badge {
-      display: inline-block;
-      background: rgba(255,255,255,.14);
-      border: 1px solid rgba(255,255,255,.28);
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
-    h1 {
-      font-size: clamp(32px, 6vw, 56px);
-      line-height: 1.15;
-      margin: 0 0 18px;
-      letter-spacing: .02em;
-    }
-    .lead {
-      font-size: 18px;
-      max-width: 760px;
-      margin: 0 0 28px;
-      color: #e5e7eb;
-    }
-    .cta-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 22px;
-      border-radius: 14px;
-      font-weight: 700;
-      text-decoration: none;
-      border: 0;
-      cursor: pointer;
-    }
-    .btn-main { background: #22c55e; color: #052e16; }
-    .btn-sub { background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.28); }
-    .note { font-size: 13px; color: #cbd5e1; margin-top: 12px; }
-    section { padding: 56px 0; }
-    h2 { font-size: 30px; line-height: 1.35; margin: 0 0 24px; }
-    h3 { font-size: 20px; margin: 0 0 8px; }
-    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .card {
-      background: #111827;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.25);
-    }
-    .price-box {
-      background: #111827;
-      border: 2px solid #22c55e;
-      border-radius: 28px;
-      padding: 30px;
-      box-shadow: 0 16px 34px rgba(34,197,94,.14);
-    }
-    .price { font-size: 48px; font-weight: 900; margin: 0; color: #16a34a; }
-    .small { font-size: 14px; color: #94a3b8; }
-    .list { padding-left: 1.2em; margin: 12px 0 0; }
-    .list li { margin: 6px 0; }
-    .steps { counter-reset: step; display: grid; gap: 14px; }
-    .step {
-      background: #111827;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 18px;
-      padding: 18px 20px;
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 14px;
-      align-items: start;
-    }
-    .step::before {
-      counter-increment: step;
-      content: counter(step);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: #111827;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-    }
-    .faq { display: grid; gap: 14px; }
-    details {
-      background: #111827;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 18px;
-      padding: 18px 20px;
-    }
-    summary { font-weight: 700; cursor: pointer; }
-    footer { padding: 36px 0; color: #94a3b8; font-size: 13px; background:#020617; text-align:center; }
-    .form-box {
-      background: #111827;
-      color: #fff;
-      border-radius: 28px;
-      padding: 30px;
-    }
-    .form-box p { color: #cbd5e1; }
-    .warning {
-      background: rgba(251,146,60,.08);
-      border: 1px solid rgba(251,146,60,.25);
-      color: #fdba74;
-      border-radius: 18px;
-      padding: 16px 18px;
-      margin-top: 18px;
-      font-size: 14px;
-    }
-    .sample-slider {
-      display:flex;
-      gap:18px;
-      overflow-x:auto;
-      flex-wrap:nowrap;
-      scroll-snap-type:x mandatory;
-      padding-bottom:10px;
-      -webkit-overflow-scrolling:touch;
-    }
-    .sample-slider::-webkit-scrollbar {
-      height:8px;
-    }
-    .sample-slider::-webkit-scrollbar-thumb {
-      background:rgba(255,255,255,.18);
-      border-radius:999px;
-    }
-    .sample-card {
-      width:220px;
-      min-width:220px;
-      padding:12px;
-      background:#111827;
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:22px;
-      flex-shrink:0;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NextFeed ワンコイン切り抜き</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-    @media (max-width: 760px) {
-      .sample-slider {
-        justify-content:flex-start;
-      }
-      .sample-card {
-        scroll-snap-align:start;
-      }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-      .cards { grid-template-columns: 1fr; }
-      section { padding: 42px 0; }
-      .step { grid-template-columns: 1fr; }
-    }
-  </style>
+body{
+font-family:'Noto Sans JP',sans-serif;
+background:#d9c7f5;
+color:#fff;
+line-height:1.7;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+.container{
+width:100%;
+max-width:1200px;
+margin:auto;
+padding:0 20px;
+}
+
+.hero-image{
+background:#000;
+}
+
+.hero-image img{
+width:100%;
+display:block;
+}
+
+.section{
+padding:90px 0;
+}
+
+.white-section{
+background:#e5d5fb;
+color:#111;
+}
+
+.section-title{
+text-align:center;
+font-size:52px;
+font-weight:900;
+margin-bottom:20px;
+line-height:1.3;
+}
+
+.section-title span{
+color:#8b5cf6;
+}
+
+.section-sub{
+text-align:center;
+max-width:800px;
+margin:0 auto 60px;
+color:#666;
+font-size:18px;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:25px;
+align-items:stretch;
+}
+
+.feature-card{
+background:#fff;
+border:1px solid #ececec;
+border-radius:28px;
+padding:40px 25px;
+text-align:center;
+transition:.3s;
+}
+
+.feature-card:hover{
+transform:translateY(-5px);
+box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+
+.feature-icon{
+font-size:52px;
+margin-bottom:20px;
+color:#8b5cf6;
+}
+
+.feature-card h3{
+font-size:24px;
+font-weight:800;
+margin-bottom:12px;
+line-height:1.4;
+word-break:keep-all;
+}
+
+.feature-card p{
+font-size:15px;
+color:#666;
+line-height:1.8;
+word-break:keep-all;
+}
+
+.feature-card{
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+align-items:center;
+min-height:320px;
+height:100%;
+}
+
+.feature-card p{
+font-size:15px;
+color:#666;
+}
+
+.price-section{
+background:
+radial-gradient(circle at top right,rgba(139,92,246,.3),transparent 25%),
+#0b0615;
+}
+
+.price-box{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:35px;
+padding:50px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+}
+
+.price-item{
+text-align:center;
+}
+
+.price-item .icon{
+font-size:42px;
+margin-bottom:15px;
+}
+
+.price-item h3{
+font-size:22px;
+margin-bottom:12px;
+}
+
+.price-item .value{
+font-size:42px;
+font-weight:900;
+background:linear-gradient(90deg,#c084fc,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.cta{
+padding:100px 0;
+background:#dcc7fa;
+}
+
+.cta-box{
+background:linear-gradient(135deg,#1a0f2e,#12081f);
+border-radius:40px;
+padding:70px 40px;
+text-align:center;
+color:#fff;
+}
+
+.cta-box h2{
+font-size:52px;
+font-weight:900;
+margin-bottom:20px;
+line-height:1.3;
+}
+
+.cta-box p{
+color:#d6d6d6;
+font-size:18px;
+margin-bottom:40px;
+}
+
+.button-group{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn-main{
+display:inline-block;
+padding:18px 38px;
+border-radius:18px;
+background:linear-gradient(90deg,#8b5cf6,#6d28d9);
+font-weight:700;
+font-size:18px;
+color:#fff;
+text-decoration:none;
+box-shadow:0 0 25px rgba(139,92,246,.35);
+}
+
+.btn-sub{
+display:inline-block;
+padding:18px 38px;
+border-radius:18px;
+background:rgba(255,255,255,.08);
+font-weight:700;
+font-size:18px;
+color:#fff;
+text-decoration:none;
+border:1px solid rgba(255,255,255,.1);
+}
+
+.footer{
+padding:40px 20px;
+text-align:center;
+font-size:14px;
+color:#999;
+background:#05030a;
+}
+
+@media(max-width:980px){
+.features{
+grid-template-columns:repeat(2,1fr);
+}
+
+.price-box{
+grid-template-columns:repeat(2,1fr);
+}
+
+.section-title{
+font-size:42px;
+}
+}
+
+@media(max-width:640px){
+.features{
+grid-template-columns:1fr;
+}
+
+.price-box{
+grid-template-columns:1fr;
+padding:35px 25px;
+}
+
+.section-title{
+font-size:34px;
+}
+
+.cta-box h2{
+font-size:32px;
+}
+
+.hero-image img{
+min-height:240px;
+object-fit:cover;
+}
+
+}
+
+@media(max-width:900px){
+
+.features{
+grid-template-columns:repeat(2,1fr);
+}
+
+.cta .container > div:first-child{
+display:flex !important;
+flex-direction:column !important;
+}
+
+.cta .container > div:last-child{
+grid-template-columns:1fr 1fr !important;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero-buttons-overlay{
+position:static !important;
+display:flex !important;
+flex-direction:column !important;
+padding:20px;
+background:#d9c7f5;
+gap:14px !important;
+}
+
+.hero-buttons-overlay a{
+width:100%;
+justify-content:center;
+text-align:center;
+}
+
+
+.features{
+grid-template-columns:1fr;
+}
+
+.section-title{
+font-size:36px;
+}
+
+.section-sub{
+font-size:16px;
+margin-bottom:40px;
+}
+
+.price-mobile-grid{
+display:flex !important;
+flex-direction:column;
+
+gap:0;
+}
+
+.price-mobile-grid > div{
+border-right:none !important;
+border-bottom:1px solid rgba(255,255,255,.08);
+padding:28px 16px !important;
+width:100%;
+
+}
+
+.price-mobile-grid > div:nth-child(odd){
+border-right:none !important;
+}
+
+.price-mobile-grid > div:last-child{
+border-bottom:none !important;
+}
+
+.price-mobile-grid span{
+font-size:38px !important;
+}
+
+.price-mobile-grid div[style*='font-size:96px']{
+font-size:58px !important;
+letter-spacing:-2px !important;
+}
+
+.price-mobile-grid h3{
+font-size:24px !important;
+}
+
+.price-mobile-grid p{
+font-size:24px !important;
+}
+
+.cta .container > div:first-child{
+grid-template-columns:1fr !important;
+padding:24px !important;
+}
+
+.cta h2{
+font-size:30px !important;
+}
+
+.cta a{
+font-size:20px !important;
+padding:18px 16px !important;
+}
+
+.cta .container > div:last-child{
+grid-template-columns:1fr !important;
+}
+
+}
+
+
+
+</style>
 </head>
 <body>
-  <header>
-    <div class="wrap" style="position:relative; z-index:2;">
-      <div class="badge">500円で配信を切り抜ける｜配信者向けワンコインプラン</div>
-      <h1>ワンコインで、<br>あなたの配信を切り抜きます。</h1>
-      <p class="lead"><strong style="color:#fff; font-size:20px;">あなたのアーカイブ、眠ったままになってませんか？</strong><br><br>収益化したけど、Short投稿まで手が回らない。<br>そんな配信者向けに、配信の面白いシーンをShort向けに編集します。<br><br><span style="font-size:15px; color:#cbd5e1;">個人勢・企業勢問わず依頼可能です。<br>Short投稿を増やしたい方にもおすすめです。</span></p>
-      <div class="cta-row" style="margin-top:24px; justify-content:flex-start;">
-        <a class="btn btn-main" href="#order">作成を依頼する</a>
-        <a class="btn btn-sub" href="#price">料金を見る</a>
-      </div>
-      <div class="note">※秒数指定はできません。素材内容に合わせて15秒〜60秒の範囲で調整します。</div>
-      <div class="card" style="max-width:420px; margin-top:22px; background:#111827; border:1px solid rgba(255,255,255,.08);">
-        <strong style="color:#22c55e;">🟢 現在受付中</strong><br>
-        通常納期：3〜5日程度
-      </div>
-    </div>
-  </header>
 
-  <main>
-    <section>
-      <div class="wrap">
-        <h2>こんな方におすすめです</h2>
-        <div class="cards">
-          <div class="card">
-            <h3>収益化したけどShortまで回らない</h3>
-            <p>配信はしているけど、切り抜き編集やShort投稿まで手が回らない方向けです。</p>
-          </div>
-          <div class="card">
-            <h3>配信をもっと見つけてもらいたい</h3>
-            <p>アーカイブだけでは届きにくい配信を、Shortとして見つけてもらいやすくします。</p>
-          </div>
-          <div class="card">
-            <h3>まずは低コストで試したい</h3>
-            <p>いきなり高額編集を頼むのは不安。そんな方向けにワンコイン価格で受付しています。</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<section class="hero-image" style="position:relative;">
+<img src="https://media.discordapp.net/attachments/1502868460609208380/1502870207440490559/content.png?ex=6a014873&is=69fff6f3&hm=9d4177348821dc46af0edc3f8714025185e5532e6d502bb7f85d0c9060d9e6f0&=&format=webp&quality=lossless&width=1626&height=856" alt="NextFeed ワンコイン切り抜きヘッダー">
 
-    <section id="price">
-      <div class="wrap">
-        <h2>料金</h2>
-        <div class="price-box">
-          <p class="price">500円</p>
-          <p><strong>15秒〜60秒のShort向け切り抜き動画を1本制作します。</strong></p>
-          <ul class="list">
-            <li>フルテロップ対応</li>
-            <li>簡易SE挿入</li>
-            <li>BGM有り・無し選択OK</li>
-            <li>不要部分のカット</li>
-            <li>ショート向けのテンポ調整</li>
-            
-          </ul>
-          <div class="warning">
-            対応範囲はシンプル編集です。<br>
-            派手なエフェクト、複雑な演出、サムネイル制作、フル演出編集は含まれません。
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="hero-buttons-overlay" style="position:absolute;right:6%;bottom:8%;display:flex;gap:18px;flex-wrap:wrap;z-index:5;">
+<a href="#form" class="btn-main" style="font-size:24px;padding:20px 34px;border-radius:18px;backdrop-filter:blur(8px);">
+✉ 作成を依頼する
+</a>
 
-    <section>
-      <div class="wrap">
-        <h2>オプション</h2>
-        <div class="cards">
-          <div class="card">
-            <h3>切り抜き箇所お任せ</h3>
-            <p style="font-size:28px; font-weight:800; color:#22c55e; margin:8px 0;">+500円</p>
-            <p>配信内容を確認し、Short向けに切り抜き箇所をこちらで選定します。</p>
-          </div>
+<a href="#price-detail" style="display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;padding:20px 30px;border-radius:18px;background:rgba(255,255,255,.88);color:#6d28d9;text-decoration:none;border:2px solid rgba(255,255,255,.6);box-shadow:0 8px 24px rgba(0,0,0,.12);backdrop-filter:blur(8px);">
+💰 料金・サービス詳細を見る
+</a>
+</div>
+</section>
 
-          <div class="card">
-            <h3>演出強化</h3>
-            <p style="font-size:28px; font-weight:800; color:#22c55e; margin:8px 0;">+500円</p>
-            <p>ズーム・SE追加・素材挿入など、Short向けの演出を強化します。</p>
-          </div>
+<section class="section white-section" style="padding-top:70px;">
+<div class="container">
 
-          <div class="card">
-            <h3>最優先制作</h3>
-            <p style="font-size:28px; font-weight:800; color:#22c55e; margin:8px 0;">+1000円</p>
-            <p>通常より優先して制作を行います。24時間以内目安で対応します。</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<h2 class="section-title" style="white-space:nowrap;">
+面白い瞬間を、 <span>Short動画に。</span>
+</h2>
 
-    <section>
-      <div class="wrap">
-        <h2>納品までの流れ</h2>
-        <div class="steps" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
-          <div class="step" style="text-align:center; grid-template-columns:1fr;">
-            <div style="font-size:42px;">📩</div>
-            <div>
-              <h3>配信URLと切り抜きたい時間を送信</h3>
-              <p>例：12分30秒〜13分20秒あたり、など。大まかな指定でも大丈夫です。</p>
-            </div>
-          </div>
-          <div class="step" style="text-align:center; grid-template-columns:1fr;">
-            <div style="font-size:42px;">💰</div>
-            <div>
-              <h3>内容確認後、お支払い案内</h3>
-              <p>内容確認後、PayPayまたは銀行振込のご案内をお送りします。</p>
-            </div>
-          </div>
-          <div class="step" style="text-align:center; grid-template-columns:1fr;">
-            <div style="font-size:42px;">✂️</div>
-            <div>
-              <h3>お支払い確認後、制作開始</h3>
-              <p>素材内容を確認し、Short向けに使いやすい長さへ調整します。</p>
-            </div>
-          </div>
-          <div class="step" style="text-align:center; grid-template-columns:1fr;">
-            <div style="font-size:42px;">🎬</div>
-            <div>
-              <h3>動画データを納品</h3>
-              <p>完成した動画を確認いただき、投稿に使える形でお渡しします。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<p class="section-sub">
+配信の見どころをテンポよく編集し、
+見やすく・拡散されやすいShort動画に仕上げます。<br><br>
+<span style="font-size:20px;font-weight:800;color:#8b5cf6;">
+配信後の「切り抜き作業」をもっと楽に。
+</span>
+</p>
 
-    <details style="margin:56px auto; max-width:980px;">
-      <summary style="font-size:28px;">サンプル動画を見る</summary>
-      <section>
-        <div class="wrap">
-          <div class="sample-slider">
-          <div class="sample-card">
-            <iframe width="100%" height="360" src="https://www.youtube.com/embed/f3ruGi3U5yk" title="Sample Video 1" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
-          </div>
-          <div class="sample-card">
-            <iframe width="100%" height="360" src="https://www.youtube.com/embed/6tf_vomZPNY" title="Sample Video 2" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
-          </div>
-          <div class="sample-card">
-            <iframe width="100%" height="360" src="https://www.youtube.com/embed/h-mrCTlm8QI" title="Sample Video 3" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
-          </div>
-          <div class="sample-card">
-            <iframe width="100%" height="360" src="https://www.youtube.com/embed/7yOC0cBIGMA" title="Sample Video 4" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
-          </div>
-          <div class="sample-card">
-            <iframe width="100%" height="360" src="https://www.youtube.com/embed/nTMX9oxnbH8" title="Sample Video 5" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
-          </div>
-          <div class="sample-card">
-            <iframe width="100%" height="360" src="https://www.youtube.com/embed/PmktCgldxf8" title="Sample Video 6" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
-          </div>
-          <div class="sample-card">
-            <iframe width="100%" height="360" src="https://www.youtube.com/embed/bvYRVyvw01g" title="Sample Video 7" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
-          </div>
-          <div class="sample-card">
-            <iframe width="100%" height="360" src="https://www.youtube.com/embed/K2iK8tR_Rhs" title="Sample Video 8" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
-          </div>
-          <div class="sample-card">
-            <iframe width="100%" height="360" src="https://www.youtube.com/embed/lly7uyil7sU" title="Sample Video 9" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
-          </div>
-          <div class="sample-card">
-            <iframe width="100%" height="360" src="https://www.youtube.com/embed/DC2pvPptuek" title="Sample Video 10" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe>
-          </div>
-        </div>
-        </div>
-      </section>
-    </details>
+<div class="features" style="margin-bottom:40px;">
 
-    <section>
-      <div class="wrap">
-        <h2>注意事項</h2>
-        <div class="card">
-          <ul class="list">
-            <li>秒数の細かい指定はできません。15秒〜60秒の範囲で調整します。</li>
-            <li>切り抜き元の配信・動画の使用許可は依頼者側でご確認ください。</li>
-            <li>公序良俗に反する内容や権利上問題がある素材はお受けできません。</li>
-            
-            <li>修正は1回まで対応します。（テロップミスは回数に含みません）</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<div class="feature-card">
+<div class="feature-icon">✂</div>
+<h3>見どころを厳選</h3>
+<p>面白いシーンをしっかり切り抜き。</p>
+</div>
 
-    <details style="margin:56px auto; max-width:980px;">
-      <summary style="font-size:28px;">よくある質問</summary>
-      <section>
-      <div class="wrap">
-        <div class="faq">
-          <details>
-            <summary>切り抜き箇所をお任せできますか？</summary>
-            <p>追加オプション「切り抜き箇所お任せ」を選択いただくことで対応可能です。</p>
-          </details>
-          <details>
-            <summary>ゲーム配信でも対応できますか？</summary>
-            <p>対応可能です。雑談、ゲーム配信、企画配信など、Shortにしやすい場面を編集します。</p>
-          </details>
-          <details>
-            <summary>字幕は全部入りますか？</summary>
-            <p>基本的にフルテロップ対応となります。視認性を重視し、Short向けに読みやすく調整します。</p>
-          </details>
-          <details>
-            <summary>納期はどれくらいですか？</summary>
-            <p>通常は3〜5日程度で納品しています。依頼状況によって変動する場合があります。</p>
-          </details>
-          <details>
-            <summary>なぜ500円なんですか？</summary>
-            <p>現在は配信者応援キャンペーンとして、実績制作とサービス拡大を目的に低価格で受付しています。今後、受付状況により価格を変更する場合があります。</p>
-          </details>
-        </div>
-      </div>
-    </section>
-    </details>
+<div class="feature-card">
+<div class="feature-icon">T</div>
+<h3>フルテロップ対応</h3>
+<p>Short向けに見やすいフル字幕で編集。</p>
+</div>
 
-    <section>
-      <div class="wrap">
-        <h2>実際にいただいた感想</h2>
-        <div class="cards">
-          <div class="card">
-            <p>「切り抜き作っていただくの初めてで凄く感激です…！」</p>
-          </div>
-          <div class="card">
-            <p>「500円でこんなにしてもらえるんですね…！<br>完璧すぎます！」</p>
-          </div>
-          <div class="card">
-            <p>「テンポよく切り抜いて下さり、<br>自分の配信なのに面白くてずっと見ちゃいます😂」</p>
-          </div>
-          <div class="card">
-            <p>「編集神すぎて<br>びっくりしました！！！！！！」</p>
-          </div>
-          <div class="card">
-            <p>「すごくかわいく切り抜いていただきありがとうございます！<br>修正ございません！」</p>
-          </div>
-          <div class="card">
-            <p>「とてもかわいらしく作成いただき誠にありがとうございます。<br>大変満足しております！」</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="feature-card">
+<div class="feature-icon">♫</div>
+<h3>BGM・効果音</h3>
+<p>雰囲気に合わせてテンポよく演出。</p>
+</div>
 
-    <section id="order">
-      <div class="wrap">
-        <div class="form-box" style="border:1px solid rgba(255,255,255,.12); box-shadow:0 10px 28px rgba(0,0,0,.28);">
-          <div class="cta-row" style="margin-bottom:22px; justify-content:center;">
-            <button class="btn btn-main" type="button">依頼フォーム</button>
-          </div>
+<div class="feature-card">
+<div class="feature-icon">▶</div>
+<h3>Shorts最適化</h3>
+<p>縦型フォーマットですぐ投稿可能。</p>
+</div>
 
-          <div style="text-align:center;">
-            <h2>ワンコイン切り抜き｜依頼フォーム</h2>
-          </div>
+</div>
 
-          <form action="https://formsubmit.co/NextFeed456@outlook.com" method="POST" style="margin-top:22px; display:grid; gap:16px;">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://nextfeed456.github.io/onecoin/thanks.html">
-            <input type="hidden" name="_subject" id="dynamicSubject" value="ワンコイン切り抜き依頼">
+<div style="margin-top:10px;background:linear-gradient(135deg,#12071f,#09050f);border-radius:32px;padding:28px 24px;border:2px solid rgba(139,92,246,.22);box-shadow:0 0 30px rgba(139,92,246,.16);overflow:hidden;">
 
-            <div>
-              <label style="display:block; margin-bottom:6px; font-weight:700;">活動名 <span style="color:#fdba74;">必須</span></label>
-              <input type="text" name="name" placeholder="活動名" required style="width:100%; padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#0f172a; color:#fff;">
-            </div>
+<div class="price-mobile-grid" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;align-items:center;color:#fff;text-align:center;">
 
-            <div>
-              <label style="display:block; margin-bottom:6px; font-weight:700;">依頼する動画本数 <span style="color:#fdba74;">必須</span></label>
-              <select name="count" required style="width:100%; padding:14px; border-radius:12px; background:#0f172a; color:#fff; border:1px solid rgba(255,255,255,.08);">
-                <option>1本</option>
-                <option>2本</option>
-                <option>3本</option>
-              </select>
-              <p class="small" style="margin:6px 0 0;">1度の依頼で最大3本まで。4本以上は事前にXまたはメールでご相談ください。</p>
-            </div>
+<div style="padding:18px 10px;border-right:1px solid rgba(255,255,255,.08);">
+<div style="display:inline-block;background:#8b5cf6;padding:6px 18px;border-radius:999px;font-size:14px;font-weight:700;margin-bottom:14px;">
+基本料金
+</div>
 
-            <div>
-              <label style="display:block; margin-bottom:6px; font-weight:700;">切り抜きたい配信アーカイブ <span style="color:#fdba74;">必須</span></label>
-              <input type="text" name="archive" placeholder="配信アーカイブのURL" required style="width:100%; padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#0f172a; color:#fff;">
-            </div>
+<div style="font-size:96px;font-weight:900;line-height:1;background:linear-gradient(180deg,#d8b4fe,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-4px;white-space:nowrap;display:flex;align-items:flex-end;justify-content:center;gap:4px;">
+500<span style="font-size:40px;letter-spacing:0;">円</span>
+</div>
 
-            <div>
-              <label style="display:block; margin-bottom:6px; font-weight:700;">切り抜き位置 <span style="color:#fdba74;">必須</span></label>
-              <input type="text" name="time" placeholder="例：1:30:00からの○○のシーンをお願いします" required style="width:100%; padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#0f172a; color:#fff;">
-              <p class="small" style="margin:6px 0 0;">おまかせの場合は、追加オプション「切り抜き箇所お任せ（+500円 / 本）」をご選択の上、<br>「おまかせ」とご記入ください。</p>
-            </div>
+<div style="margin-top:14px;display:inline-block;background:rgba(236,72,153,.12);color:#ffffff;padding:8px 14px;border-radius:999px;font-size:13px;font-weight:900;border:1px solid rgba(244,114,182,.25);">
+実績制作・配信者応援価格
+</div>
+</div>
 
-            <div>
-              <label style="display:block; margin-bottom:6px; font-weight:700;">配信レイアウトの要望 <span style="color:#94a3b8; font-size:13px;">任意</span></label>
-              <textarea name="layout" placeholder="例：普段のShortに合わせたい、ロゴを入れてほしい等" rows="4" style="width:100%; padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#0f172a; color:#fff;"></textarea>
-            </div>
+<div style="padding:18px 10px;border-right:1px solid rgba(255,255,255,.08);">
+<div style="font-size:36px;margin-bottom:12px;color:#a855f7;">⏰</div>
+<h3 style="font-size:24px;font-weight:800;margin-bottom:10px;line-height:1.2;">
+通常納期
+</h3>
+<p style="font-size:28px;font-weight:900;line-height:1.2;">
+3〜5日
+</p>
+<p style="font-size:13px;color:#bbb;margin-top:8px;">
+※内容により前後します
+</p>
+</div>
 
-            <details style="background:#0f172a; border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:14px;">
-              <summary>追加オプションを選択する <span style="color:#94a3b8; font-size:13px;">任意</span></summary>
-              <div style="display:grid; gap:8px; margin-top:12px;">
-                <label><input type="checkbox" name="option" value="切り抜き箇所お任せ（+500円）" data-price="500"> 切り抜き箇所お任せ（+500円 / 本）</label>
-                <label><input type="checkbox" name="option" value="演出強化（+500円）" data-price="500"> 演出強化（+500円 / 本）</label>
-                <label><input type="checkbox" name="option" value="最優先制作（+1000円）" data-price="1000"> 最優先制作（+1000円 / 本）</label>
-                <label><input type="checkbox" name="option" value="実績公開NG（+500円）" data-price="single500"> 実績公開NG（+500円）</label>
-                <label><input type="checkbox" name="option" value="アレンジ動画（+500円）" data-price="500"> アレンジ動画（雰囲気寄せ編集）（+500円 / 本）</label>
-              </div>
-            </details>
+<div style="padding:18px 10px;border-right:1px solid rgba(255,255,255,.08);">
+<div style="font-size:36px;margin-bottom:12px;color:#a855f7;">✏</div>
+<h3 style="font-size:24px;font-weight:800;margin-bottom:10px;line-height:1.2;">
+修正対応
+</h3>
+<p style="font-size:28px;font-weight:900;line-height:1.2;">
+1回無料
+</p>
+<p style="font-size:13px;color:#bbb;margin-top:8px;">
+※大幅変更は追加料金
+</p>
+</div>
 
-            <div>
-              <label style="display:block; margin-bottom:6px; font-weight:700;">お支払方法 <span style="color:#fdba74;">必須</span></label>
-              <select name="payment" required style="width:100%; padding:14px; border-radius:12px; background:#0f172a; color:#fff; border:1px solid rgba(255,255,255,.08);">
-                <option>PayPay</option>
-                <option>振込</option>
-              </select>
-            </div>
+<div style="padding:18px 10px;">
+<div style="font-size:36px;margin-bottom:12px;color:#a855f7;">☑</div>
+<h3 style="font-size:24px;font-weight:800;margin-bottom:10px;line-height:1.2;">
+秒数指定不可
+</h3>
+<p style="font-size:24px;font-weight:900;line-height:1.2;">
+15〜60秒
+</p>
+<p style="font-size:13px;color:#bbb;margin-top:8px;">
+素材内容に合わせて調整
+</p>
+</div>
 
-            <div>
-              <label style="display:block; margin-bottom:6px; font-weight:700;">連絡方法 <span style="color:#fdba74;">必須</span></label>
-              <select name="contact_method" required style="width:100%; padding:14px; border-radius:12px; background:#0f172a; color:#fff; border:1px solid rgba(255,255,255,.08);">
-                <option>XのDM</option>
-                <option>メール</option>
-                <option>Discord</option>
-              </select>
-              <p class="small" style="margin:6px 0 0;">Xの場合は @matsun0819 から連絡しますので、フォローをお願いします。<br><a href="https://x.com/matsun0819" target="_blank" style="color:#93c5fd;">https://x.com/matsun0819</a></p>
-            </div>
+</div>
 
-            <div>
-              <label style="display:block; margin-bottom:6px; font-weight:700;">X ID・メールアドレス・Discord IDなど <span style="color:#fdba74;">必須</span></label>
-              <input type="text" name="contact" placeholder="選択した連絡方法のID・アドレスをご記入ください" required style="width:100%; padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#0f172a; color:#fff;">
-            </div>
+</div>
+</div>
+</div>
 
-            <div class="warning">
-              ・お支払い確認後に制作開始となります。<br>
-              ・制作するShortの秒数指定はできません。<br>
-              ・修正は軽微な内容のみ対応となります。<br>
-              ・実績として公開させていただく場合があります。<br>
-              ・実績公開NGの場合は+500円となります。
-            </div>
+<div style="margin-top:46px;background:#eadcff;border:1px solid #d9c4ff;border-radius:28px;padding:34px;box-shadow:0 8px 24px rgba(139,92,246,.08);">
 
-            <input type="hidden" name="estimated_total" id="estimatedTotalInput" value="500円">
-            <div class="price-box" style="padding:18px; border-width:1px;">
-              <strong>想定金額</strong><br>
-              <span id="estimatedTotal" style="font-size:32px; font-weight:900; color:#22c55e;">500円</span>
-              <p class="small" style="margin:6px 0 0;">本数と選択オプションをもとにした目安です。正式な金額は内容確認後にご案内します。</p>
-            </div>
+<h3 style="font-size:38px;font-weight:900;color:#111;text-align:center;margin-bottom:18px;line-height:1.4;">
+配信URLを送るだけ。<br>
+<span style="color:#8b5cf6;">切り抜き制作をスムーズに開始できます！</span>
+</h3>
 
-            <button class="btn btn-main" type="submit">依頼内容を送信</button>
+<div style="display:flex;justify-content:center;flex-wrap:wrap;margin-bottom:28px;">
+<div style="background:#fff;color:#111;padding:12px 22px;border-radius:999px;font-size:15px;font-weight:900;border:1px solid #ddd6fe;box-shadow:0 4px 12px rgba(139,92,246,.08);display:flex;align-items:center;gap:10px;">
+<span style="color:#16a34a;">🟢 現在受付中</span>
+<span style="color:#c4b5fd;">｜</span>
+<span style="color:#8b5cf6;">⏰ 通常納期：3〜5日程度</span>
+</div>
+</div>
 
-            <div style="text-align:center; margin-top:12px;">
-              <p class="small">相談・見積もりは以下からどうぞ</p>
-              <div class="cta-row" style="justify-content:center; margin-top:12px;">
-                <a class="btn btn-sub" href="https://nextfeed456.github.io/" target="_blank">NextFeedを見る</a>
-                <a class="btn btn-sub" href="https://x.com/matsun0819" target="_blank">Xで相談する</a>
-                <a class="btn btn-sub" href="mailto:NextFeed456@outlook.com">メールで相談する</a>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
+<p style="text-align:center;font-size:14px;color:#666;font-weight:700;margin-bottom:28px;">
+※切り抜き箇所おまかせは追加オプション（+500円/本）となります
+</p>
 
-  <footer>
-    <div class="wrap">
-      <p>© NextFeed</p>
-      <p>
-        <a href="https://nextfeed456.github.io/privacy/">プライバシーポリシー</a> ｜
-        <a href="https://nextfeed456.github.io/contact/">問い合わせ</a> ｜
-        <a href="https://nextfeed456.github.io/about/">運営者情報</a>
-      </p>
-    </div>
-  </footer>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+
+<div style="background:#f7f0ff;border-radius:22px;padding:28px;text-align:center;border:1px solid #e6d6ff;">
+<div style="font-size:54px;margin-bottom:12px;">📩</div>
+<h4 style="font-size:24px;font-weight:900;color:#111;margin-bottom:10px;">
+STEP 1
+</h4>
+<p style="font-size:18px;font-weight:700;color:#555;">
+配信URLを送る
+</p>
+</div>
+
+<div style="background:#f7f0ff;border-radius:22px;padding:28px;text-align:center;border:1px solid #e6d6ff;">
+<div style="font-size:54px;margin-bottom:12px;">✂</div>
+<h4 style="font-size:24px;font-weight:900;color:#111;margin-bottom:10px;">
+STEP 2
+</h4>
+<p style="font-size:18px;font-weight:700;color:#555;">
+切り抜きを制作
+</p>
+</div>
+
+<div style="background:#f7f0ff;border-radius:22px;padding:28px;text-align:center;border:1px solid #e6d6ff;">
+<div style="font-size:54px;margin-bottom:12px;">🎬</div>
+<h4 style="font-size:24px;font-weight:900;color:#111;margin-bottom:10px;">
+STEP 3
+</h4>
+<p style="font-size:18px;font-weight:700;color:#555;">
+完成動画を納品
+</p>
+</div>
+
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px;">
+<div style="background:#8b5cf6;color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;">VTuber</div>
+<div style="background:#8b5cf6;color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;">ゲーム実況</div>
+<div style="background:#8b5cf6;color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;">雑談配信</div>
+<div style="background:#8b5cf6;color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;">企画配信</div>
+<div style="background:#8b5cf6;color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;">実写配信</div>
+</div>
+
+</div>
+
+<div style="margin-top:70px;">
+
+<details style="margin-top:70px;background:#eadcff;border:1px solid #d9c4ff;border-radius:28px;padding:26px 28px;box-shadow:0 8px 24px rgba(139,92,246,.08);">
+<summary style="font-size:38px;font-weight:900;color:#111;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:center;gap:12px;">
+🎬 サンプル動画を見る
+</summary>
+
+<div style="display:flex;gap:20px;overflow-x:auto;padding:28px 0 14px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;">
+
+<div style="min-width:240px;background:#f7f0ff;border-radius:24px;padding:14px;border:1px solid #dcc7fa;scroll-snap-align:start;"><iframe width="100%" height="420" src="https://www.youtube.com/embed/f3ruGi3U5yk" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe></div>
+<div style="min-width:240px;background:#f7f0ff;border-radius:24px;padding:14px;border:1px solid #dcc7fa;scroll-snap-align:start;"><iframe width="100%" height="420" src="https://www.youtube.com/embed/6tf_vomZPNY" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe></div>
+<div style="min-width:240px;background:#f7f0ff;border-radius:24px;padding:14px;border:1px solid #dcc7fa;scroll-snap-align:start;"><iframe width="100%" height="420" src="https://www.youtube.com/embed/h-mrCTlm8QI" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe></div>
+<div style="min-width:240px;background:#f7f0ff;border-radius:24px;padding:14px;border:1px solid #dcc7fa;scroll-snap-align:start;"><iframe width="100%" height="420" src="https://www.youtube.com/embed/7yOC0cBIGMA" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe></div>
+<div style="min-width:240px;background:#f7f0ff;border-radius:24px;padding:14px;border:1px solid #dcc7fa;scroll-snap-align:start;"><iframe width="100%" height="420" src="https://www.youtube.com/embed/nTMX9oxnbH8" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe></div>
+<div style="min-width:240px;background:#f7f0ff;border-radius:24px;padding:14px;border:1px solid #dcc7fa;scroll-snap-align:start;"><iframe width="100%" height="420" src="https://www.youtube.com/embed/PmktCgldxf8" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe></div>
+<div style="min-width:240px;background:#f7f0ff;border-radius:24px;padding:14px;border:1px solid #dcc7fa;scroll-snap-align:start;"><iframe width="100%" height="420" src="https://www.youtube.com/embed/bvYRVyvw01g" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe></div>
+<div style="min-width:240px;background:#f7f0ff;border-radius:24px;padding:14px;border:1px solid #dcc7fa;scroll-snap-align:start;"><iframe width="100%" height="420" src="https://www.youtube.com/embed/K2iK8tR_Rhs" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe></div>
+<div style="min-width:240px;background:#f7f0ff;border-radius:24px;padding:14px;border:1px solid #dcc7fa;scroll-snap-align:start;"><iframe width="100%" height="420" src="https://www.youtube.com/embed/lly7uyil7sU" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe></div>
+<div style="min-width:240px;background:#f7f0ff;border-radius:24px;padding:14px;border:1px solid #dcc7fa;scroll-snap-align:start;"><iframe width="100%" height="420" src="https://www.youtube.com/embed/DC2pvPptuek" frameborder="0" allowfullscreen style="border-radius:18px;"></iframe></div>
+
+</div>
+</details>
+
+<div style="margin-top:54px;">
+
+<h2 style="font-size:44px;font-weight:900;color:#111;text-align:center;margin-bottom:30px;">
+実際にいただいた感想
+</h2>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+
+<div style="background:#f7f0ff;border:1px solid #dcc7fa;border-radius:22px;padding:24px;box-shadow:0 6px 18px rgba(139,92,246,.06);">
+<p style="font-size:20px;font-weight:700;color:#333;line-height:1.8;">
+「切り抜き作っていただくの初めてで凄く感激です…！」
+</p>
+</div>
+
+<div style="background:#f7f0ff;border:1px solid #dcc7fa;border-radius:22px;padding:24px;box-shadow:0 6px 18px rgba(139,92,246,.06);">
+<p style="font-size:20px;font-weight:700;color:#333;line-height:1.8;">
+「500円でこんなにしてもらえるんですね…！<br>
+完璧すぎます！」
+</p>
+</div>
+
+<div style="background:#f7f0ff;border:1px solid #dcc7fa;border-radius:22px;padding:24px;box-shadow:0 6px 18px rgba(139,92,246,.06);">
+<p style="font-size:20px;font-weight:700;color:#333;line-height:1.8;">
+「テンポよく切り抜いて下さり、<br>
+自分の配信なのに面白くてずっと見ちゃいます😂」
+</p>
+</div>
+
+<div style="background:#f7f0ff;border:1px solid #dcc7fa;border-radius:22px;padding:24px;box-shadow:0 6px 18px rgba(139,92,246,.06);">
+<p style="font-size:20px;font-weight:700;color:#333;line-height:1.8;">
+「編集神すぎて<br>
+びっくりしました！！！！！！」
+</p>
+</div>
+
+<div style="background:#f7f0ff;border:1px solid #dcc7fa;border-radius:22px;padding:24px;box-shadow:0 6px 18px rgba(139,92,246,.06);">
+<p style="font-size:20px;font-weight:700;color:#333;line-height:1.8;">
+「すごくかわいく切り抜いていただきありがとうございます！<br>
+修正ございません！」
+</p>
+</div>
+
+<div style="background:#f7f0ff;border:1px solid #dcc7fa;border-radius:22px;padding:24px;box-shadow:0 6px 18px rgba(139,92,246,.06);">
+<p style="font-size:20px;font-weight:700;color:#333;line-height:1.8;">
+「とてもかわいらしく作成いただき誠にありがとうございます。<br>
+大変満足しております！」
+</p>
+</div>
+
+</div>
+
+</div>
+
+<div style="margin-top:34px;text-align:center;">
+<h2 style="font-size:48px;font-weight:900;line-height:1.4;color:#111;">
+あなたのアーカイブ、<br>
+<span style="background:linear-gradient(90deg,#d8b4fe,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+眠ったままでいいんですか？
+</span>
+</h2>
+</form>
+</div>
+</div>
+</section>
+
+
+
+<section class="cta" style="padding-top:60px;background:#f7f4ff;">
+<div class="container">
+
+<div style="background:#eadcff;border:1px solid #e9ddff;border-radius:28px;padding:34px;display:grid;grid-template-columns:1.4fr .9fr;gap:28px;align-items:stretch;box-shadow:0 8px 30px rgba(139,92,246,.08);">
+
+<div>
+<h2 style="font-size:42px;color:#111;font-weight:900;margin-bottom:20px;line-height:1.3;">
+まずは<span style="color:#8b5cf6;">お気軽</span>にご相談ください！
+</h2>
+
+<a href="#form" class="btn-main" style="display:flex;align-items:center;justify-content:center;font-size:32px;padding:26px 20px;border-radius:18px;margin-bottom:18px;">
+✉ 作成を依頼する
+</a>
+
+<a href="#price-detail" class="btn-sub" style="display:flex;align-items:center;justify-content:center;color:#8b5cf6;background:#fff;border:2px solid #c4b5fd;font-size:24px;padding:22px 20px;border-radius:18px;font-weight:800;">
+料金・サービス詳細を見る
+</a>
+</div>
+
+<div style="background:#e2d0fb;border-radius:22px;padding:26px;border:1px solid #ece7ff;">
+<h3 style="font-size:28px;font-weight:900;color:#8b5cf6;margin-bottom:18px;">
+こんな方におすすめ！
+</h3>
+
+<ul style="list-style:none;display:flex;flex-direction:column;gap:14px;color:#333;font-size:17px;font-weight:600;">
+<li>☑ Short投稿を増やしたい</li>
+<li>☑ 編集の時間が取れない</li>
+<li>☑ どこを切り抜けばいいかわからない</li>
+<li>☑ もっと多くの人に見てもらいたい</li>
+</ul>
+</div>
+
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:26px;color:#5b21b6;">
+
+<div style="display:flex;align-items:center;gap:10px;justify-content:center;font-weight:700;background:#fff;border-radius:16px;padding:18px 12px;border:1px solid #ece7ff;">
+👤 個人勢・企業勢どちらもOK
+</div>
+
+<div style="display:flex;align-items:center;gap:10px;justify-content:center;font-weight:700;background:#fff;border-radius:16px;padding:18px 12px;border:1px solid #ece7ff;">
+🔒 配信URL・未公開素材の取り扱いには十分配慮しています
+</div>
+
+<div style="display:flex;align-items:center;gap:10px;justify-content:center;font-weight:700;background:#fff;border-radius:16px;padding:18px 12px;border:1px solid #ece7ff;">
+💬 やり取りは丁寧・迅速
+</div>
+
+<div style="display:flex;align-items:center;gap:10px;justify-content:center;font-weight:700;background:#fff;border-radius:16px;padding:18px 12px;border:1px solid #ece7ff;">
+💜 ご相談・お見積りだけでもOK！
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="price-detail" class="section white-section" style="padding-top:40px;background:#ffffff;">
+<div class="container">
+
+<h2 class="section-title">
+料金・<span>オプション一覧</span>
+</h2>
+
+<p class="section-sub">
+必要な内容に合わせてオプション追加が可能です。
+</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+
+<div style="background:#eadcff;border:1px solid #e9ddff;border-radius:24px;padding:28px;box-shadow:0 8px 24px rgba(139,92,246,.06);">
+<h3 style="font-size:32px;font-weight:900;color:#8b5cf6;margin-bottom:18px;">
+基本プラン
+</h3>
+
+<div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid #eee;font-size:18px;font-weight:700;">
+<span>Short切り抜き（15〜60秒）</span>
+<span style="color:#8b5cf6;">500円</span>
+</div>
+
+<div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid #eee;font-size:18px;font-weight:700;">
+<span>フルテロップ</span>
+<span style="color:#8b5cf6;">込み</span>
+</div>
+
+<div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid #eee;font-size:18px;font-weight:700;">
+<span>BGM・効果音</span>
+<span style="color:#8b5cf6;">込み</span>
+</div>
+
+<div style="display:flex;justify-content:space-between;padding:16px 0;font-size:18px;font-weight:700;">
+<span>シーン選定</span>
+<span style="color:#8b5cf6;">込み</span>
+</div>
+</div>
+
+<div style="background:#eadcff;border:1px solid #e9ddff;border-radius:24px;padding:28px;box-shadow:0 8px 24px rgba(139,92,246,.06);">
+<h3 style="font-size:32px;font-weight:900;color:#8b5cf6;margin-bottom:18px;">
+オプション
+</h3>
+
+
+
+
+
+<div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid #eee;font-size:18px;font-weight:700;">
+<span>演出・エフェクト追加</span>
+<span style="color:#8b5cf6;">+500円/本</span>
+</div>
+
+<div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid #eee;font-size:18px;font-weight:700;">
+<span>アレンジ動画（雰囲気寄せ編集）</span>
+<span style="color:#8b5cf6;">+500円/本</span>
+</div>
+
+<div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid #eee;font-size:18px;font-weight:700;">
+<span>おまかせ切り抜き</span>
+<span style="color:#8b5cf6;">+500円/本</span>
+</div>
+
+<div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid #eee;font-size:18px;font-weight:700;">
+<span>最優先制作</span>
+<span style="color:#8b5cf6;">+1000円/本</span>
+</div>
+
+<div style="display:flex;justify-content:space-between;padding:16px 0;font-size:18px;font-weight:700;">
+<span>実績掲載NG</span>
+<span style="color:#8b5cf6;">+500円</span>
+</div>
+</div>
+
+</div>
+
+<div style="margin-top:40px;background:#e2d0fb;border:1px solid #ece7ff;border-radius:28px;padding:36px;">
+
+<h3 style="font-size:36px;font-weight:900;color:#8b5cf6;margin-bottom:22px;">
+注意事項
+</h3>
+
+<ul style="display:flex;flex-direction:column;gap:16px;color:#333;font-size:17px;font-weight:600;padding-left:20px;">
+<li>秒数の細かい指定はできません。15秒〜60秒の範囲で調整します。</li>
+<li>切り抜き元の配信・動画の使用許可は依頼者側でご確認ください。</li>
+<li>公序良俗に反する内容や権利上問題がある素材はお受けできません。</li>
+<li>修正は1回まで対応します。（テロップミスは回数に含みません）</li>
+</ul>
+
+</div>
+
+<div style="margin-top:28px;background:#eadcff;border:1px solid #e9ddff;border-radius:28px;padding:36px;box-shadow:0 8px 24px rgba(139,92,246,.05);">
+
+<h3 style="font-size:36px;font-weight:900;color:#8b5cf6;margin-bottom:26px;">
+よくある質問
+</h3>
+
+<div style="display:flex;flex-direction:column;gap:16px;">
+
+<details style="border:1px solid #ece7ff;border-radius:18px;padding:18px 20px;background:#e2d0fb;">
+<summary style="font-size:20px;font-weight:900;cursor:pointer;list-style:none;">
+切り抜き箇所をお任せできますか？
+</summary>
+<p style="font-size:17px;color:#555;margin-top:14px;">
+追加オプション「切り抜き箇所お任せ」を選択いただくことで対応可能です。
+</p>
+</details>
+
+<details style="border:1px solid #ece7ff;border-radius:18px;padding:18px 20px;background:#e2d0fb;">
+<summary style="font-size:20px;font-weight:900;cursor:pointer;list-style:none;">
+ゲーム配信でも対応できますか？
+</summary>
+<p style="font-size:17px;color:#555;margin-top:14px;">
+対応可能です。雑談、ゲーム配信、企画配信など、Shortにしやすい場面を編集します。
+</p>
+</details>
+
+<details style="border:1px solid #ece7ff;border-radius:18px;padding:18px 20px;background:#e2d0fb;">
+<summary style="font-size:20px;font-weight:900;cursor:pointer;list-style:none;">
+字幕は全部入りますか？
+</summary>
+<p style="font-size:17px;color:#555;margin-top:14px;">
+基本的にフルテロップ対応となります。視認性を重視し、Short向けに読みやすく調整します。
+</p>
+</details>
+
+<details style="border:1px solid #ece7ff;border-radius:18px;padding:18px 20px;background:#e2d0fb;">
+<summary style="font-size:20px;font-weight:900;cursor:pointer;list-style:none;">
+納期はどれくらいですか？
+</summary>
+<p style="font-size:17px;color:#555;margin-top:14px;">
+通常は3〜5日程度で納品しています。依頼状況によって変動する場合があります。
+</p>
+</details>
+
+<details style="border:1px solid #ece7ff;border-radius:18px;padding:18px 20px;background:#e2d0fb;">
+<summary style="font-size:20px;font-weight:900;cursor:pointer;list-style:none;">
+なぜ500円なんですか？
+</summary>
+<p style="font-size:17px;color:#555;margin-top:14px;">
+現在は配信者応援キャンペーンとして、実績制作とサービス拡大を目的に低価格で受付しています。今後、受付状況により価格を変更する場合があります。
+</p>
+</details>
+
+</div>
+
+</div>
+
+<div id="form" style="margin-top:40px;background:linear-gradient(135deg,#12071f,#09050f);border-radius:36px;padding:52px;color:#fff;border:1px solid rgba(168,85,247,.25);box-shadow:0 20px 60px rgba(0,0,0,.35),0 0 40px rgba(139,92,246,.12);position:relative;overflow:hidden;">
+
+<div style="position:absolute;top:-120px;right:-120px;width:320px;height:320px;background:radial-gradient(circle,rgba(168,85,247,.22),transparent 70%);"></div>
+<div style="position:absolute;bottom:-140px;left:-120px;width:320px;height:320px;background:radial-gradient(circle,rgba(139,92,246,.18),transparent 70%);"></div>
+
+<div style="position:relative;z-index:2;">
+
+<div style="display:flex;justify-content:center;margin-bottom:18px;">
+<div style="background:linear-gradient(90deg,#8b5cf6,#6d28d9);box-shadow:0 0 25px rgba(139,92,246,.35);padding:12px 26px;border-radius:999px;font-size:18px;font-weight:900;color:#ffffff;backdrop-filter:blur(10px);letter-spacing:.04em;">
+依頼フォーム
+</div>
+</div>
+
+<h3 style="font-size:56px;font-weight:900;margin-bottom:10px;text-align:center;line-height:1.1;">
+ワンコイン切り抜き
+</h3>
+
+<p style="font-size:20px;color:#d6d6d6;margin-bottom:14px;text-align:center;line-height:1.8;">
+ワンコイン切り抜き｜依頼フォーム
+</p>
+
+<p style="font-size:15px;color:#bba7df;margin-bottom:42px;text-align:center;font-weight:700;">
+必要事項だけ入力すればOK
+</p>
+
+<form action="https://formsubmit.co/NextFeed456@outlook.com" method="POST" style="display:flex;flex-direction:column;gap:30px;max-width:920px;margin:auto;position:relative;z-index:2;">
+<input type="hidden" name="_subject" value="ワンコイン切り抜き依頼">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://nextfeed456.github.io/onecoin/thanks.html">
+
+<div style="background:rgba(255,255,255,.04);padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);">
+<label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">👤 活動名 <span style="color:#fb923c;">必須</span></label>
+<input type="text" placeholder="活動名" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
+</div>
+
+<div style="background:rgba(255,255,255,.04);padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);">
+<label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">🎬 依頼する動画本数 <span style="color:#fb923c;">必須</span></label>
+<select style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
+<option>1本</option>
+<option>2本</option>
+<option>3本</option>
+</select>
+<p style="font-size:14px;color:#bbb;margin-top:8px;">1度の依頼で最大3本まで。4本以上は事前にXまたはメールでご相談ください。</p>
+</div>
+
+<div style="background:rgba(255,255,255,.04);padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);">
+<label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">📺 切り抜きたい配信アーカイブ <span style="color:#fb923c;">必須</span></label>
+<input type="text" placeholder="配信アーカイブのURL" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
+</div>
+
+<div style="background:rgba(255,255,255,.04);padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);">
+<label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">✂ 切り抜き位置 <span style="color:#fb923c;">必須</span></label>
+<textarea id="clip-position-input" placeholder="例：1:30:00からの○○のシーンをお願いします" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;min-height:130px;background:#f7f0ff;color:#111;"></textarea>
+
+<label style="display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;color:#d8c8ff;font-weight:700;cursor:pointer;">
+<input type="checkbox" id="omakase-check" style="transform:scale(1.2);accent-color:#8b5cf6;">
+切り抜き箇所おまかせ（+500円/本）
+</label>
+</div>
+
 <script>
-  const countSelect = document.querySelector('select[name="count"]');
-  const optionChecks = document.querySelectorAll('input[name="option"]');
-  const totalEl = document.getElementById('estimatedTotal');
-  const totalInput = document.getElementById('estimatedTotalInput');
-  const dynamicSubject = document.getElementById('dynamicSubject');
-  const nameInput = document.querySelector('input[name="name"]');
+const omakaseCheck = document.getElementById('omakase-check');
+const clipInput = document.getElementById('clip-position-input');
 
-  function updateEstimatedTotal() {
-    const countText = countSelect ? countSelect.value : '1本';
-    const count = parseInt(countText, 10) || 1;
-    let total = count * 500;
-
-    optionChecks.forEach((check) => {
-      if (check.checked) {
-        const rawPrice = check.dataset.price || '0';
-        if (rawPrice === 'single500') {
-          total += 500;
-        } else {
-          const price = Number(rawPrice || 0);
-          const isPerVideo = !check.value.includes('実績公開NG');
-          total += isPerVideo ? price * count : price;
-        }
-      }
-    });
-
-    const formatted = total.toLocaleString('ja-JP') + '円';
-    if (totalEl) totalEl.textContent = formatted;
-    if (totalInput) totalInput.value = formatted;
-
-    if (dynamicSubject && nameInput) {
-      const creatorName = nameInput.value || '未入力';
-      dynamicSubject.value = `ワンコイン切り抜き：${creatorName}`;
-    }
-  }
-
-  if (countSelect) countSelect.addEventListener('change', updateEstimatedTotal);
-  optionChecks.forEach((check) => check.addEventListener('change', updateEstimatedTotal));
-  if (nameInput) nameInput.addEventListener('input', updateEstimatedTotal);
-  updateEstimatedTotal();
+omakaseCheck.addEventListener('change', () => {
+if(omakaseCheck.checked){
+clipInput.value = 'おまかせ';
+clipInput.disabled = true;
+clipInput.style.opacity = '.6';
+}else{
+clipInput.value = '';
+clipInput.disabled = false;
+clipInput.style.opacity = '1';
+}
+});
 </script>
+
+<div style="background:rgba(255,255,255,.04);padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);">
+<label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">🎨 配信レイアウトの要望 任意</label>
+<textarea placeholder="例：普段のShortに合わせたい、ロゴを入れてほしい等" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;min-height:120px;background:#f7f0ff;color:#111;"></textarea>
+</div>
+
+<div>
+<label style="display:block;font-weight:800;font-size:18px;margin-bottom:16px;">追加オプションを選択する 任意</label>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+
+
+<label style="background:#221136;padding:16px;border-radius:16px;"><input type="checkbox"> 演出・エフェクト追加（+500円/本）</label>
+<label style="background:#221136;padding:16px;border-radius:16px;"><input type="checkbox"> アレンジ動画（雰囲気寄せ編集）（+500円/本）</label>
+
+<label style="background:#221136;padding:16px;border-radius:16px;"><input type="checkbox"> 最優先制作（+1000円/本）</label>
+<label style="background:#221136;padding:16px;border-radius:16px;"><input type="checkbox"> 実績掲載NG（+500円）</label>
+</div>
+</div>
+
+<div>
+<label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">お支払方法 <span style="color:#fb923c;">必須</span></label>
+<select style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
+<option>PayPay</option>
+<option>銀行振り込み</option>
+</select>
+</div>
+
+<div>
+<label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">連絡方法 <span style="color:#fb923c;">必須</span></label>
+<select style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
+<option>XのDM</option>
+<option>Discord</option>
+<option>メール</option>
+</select>
+<p style="font-size:14px;color:#bbb;margin-top:8px;">Xの場合は @matsun0819 から連絡しますので、フォローをお願いします。<br>https://x.com/matsun0819</p>
+</div>
+
+<div>
+<label style="display:block;font-weight:800;font-size:18px;margin-bottom:10px;">X ID・メールアドレス・Discord IDなど <span style="color:#fb923c;">必須</span></label>
+<input type="text" placeholder="選択した連絡方法のID・アドレスをご記入ください" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;background:#f7f0ff;color:#111;">
+
+<label style="display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;color:#d8c8ff;font-weight:700;cursor:pointer;">
+<input type="checkbox" id="repeat-user-check" style="transform:scale(1.2);accent-color:#8b5cf6;">
+以前やり取りをした事がある（入力不要）
+</label>
+</div>
+
+<script>
+const repeatCheck = document.getElementById('repeat-user-check');
+const contactInput = repeatCheck.parentElement.parentElement.querySelector('input[type="text"]');
+
+repeatCheck.addEventListener('change', () => {
+if(repeatCheck.checked){
+contactInput.value = '継続';
+contactInput.disabled = true;
+contactInput.style.opacity = '.6';
+}else{
+contactInput.value = '';
+contactInput.disabled = false;
+contactInput.style.opacity = '1';
+}
+});
+</script>
+
+<div style="background:#221136;border-radius:20px;padding:24px;">
+<ul style="display:flex;flex-direction:column;gap:10px;padding-left:18px;color:#d6d6d6;">
+<li><strong>お支払い確認後に制作開始となります。</strong></li>
+<li>制作するShortの秒数指定はできません。</li>
+<li>修正は軽微な内容のみ対応となります。</li>
+<li>実績として公開させていただく場合があります。</li>
+<li>実績公開NGの場合は+500円となります。</li>
+</ul>
+</div>
+
+<div id="price-preview" style="background:#fff;color:#111;border-radius:24px;padding:28px;text-align:center;">
+<p style="font-size:18px;font-weight:700;color:#666;margin-bottom:10px;">想定金額</p>
+<div id="estimated-price" style="font-size:68px;font-weight:900;color:#8b5cf6;line-height:1;">500円</div>
+<p style="font-size:14px;color:#666;margin-top:14px;">本数と選択オプションをもとにした目安です。正式な金額は内容確認後にご案内します。</p>
+</div>
+
+<script>
+const quantitySelect = document.querySelector('select');
+const optionCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+const estimatedPrice = document.getElementById('estimated-price');
+
+function calculatePrice(){
+let basePrice = 500;
+let quantity = parseInt(quantitySelect.value);
+let total = basePrice * quantity;
+
+optionCheckboxes.forEach(box => {
+if(box.checked){
+const text = box.parentElement.textContent;
+if(text.includes('最優先制作')){
+total += 1000 * quantity;
+}else{
+if(text.includes('/本')){
+total += 500 * quantity;
+}else{
+total += 500;
+}
+}
+}
+});
+
+estimatedPrice.textContent = total.toLocaleString() + '円';
+}
+
+quantitySelect.addEventListener('change', calculatePrice);
+optionCheckboxes.forEach(box => {
+box.addEventListener('change', calculatePrice);
+});
+
+calculatePrice();
+</script>
+
+<button id="submit-request" type="submit" style="border:none;width:100%;padding:24px;border-radius:20px;background:linear-gradient(90deg,#8b5cf6,#6d28d9);font-size:28px;font-weight:900;color:#fff;cursor:pointer;box-shadow:0 10px 30px rgba(139,92,246,.3);">
+依頼内容を送信
+</button>
+
+<script>
+document.getElementById('submit-request').addEventListener('click', () => {
+const inputs = document.querySelectorAll('#form input, #form textarea, #form select');
+
+const activityName = inputs[0].value || '未入力';
+const quantity = inputs[1].value || '未入力';
+const archive = inputs[2].value || '未入力';
+const clipPosition = inputs[3].value || '未入力';
+const layoutRequest = inputs[4].value || 'なし';
+const paymentMethod = inputs[5].value || '未入力';
+const contactMethod = inputs[6].value || '未入力';
+const contactId = inputs[7].value || '未入力';
+
+const checkedOptions = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+.map(box => '・' + box.parentElement.textContent.trim())
+.join('%0D%0A') || 'なし';
+
+const estimatedPrice = document.getElementById('estimated-price').textContent;
+
+const subject = `ワンコイン切り抜き：${activityName}`;
+
+const body = `【ワンコイン切り抜き依頼】%0D%0A%0D%0A`
++ `■ 活動名%0D%0A${activityName}%0D%0A%0D%0A`
++ `■ 依頼本数%0D%0A${quantity}%0D%0A%0D%0A`
++ `■ 配信アーカイブURL%0D%0A${archive}%0D%0A%0D%0A`
++ `■ 切り抜き位置%0D%0A${clipPosition}%0D%0A%0D%0A`
++ `■ 配信レイアウトの要望%0D%0A${layoutRequest}%0D%0A%0D%0A`
++ `■ 選択オプション%0D%0A${checkedOptions}%0D%0A%0D%0A`
++ `■ お支払方法%0D%0A${paymentMethod}%0D%0A%0D%0A`
++ `■ 連絡方法%0D%0A${contactMethod}%0D%0A%0D%0A`
++ `■ 連絡先%0D%0A${contactId}%0D%0A%0D%0A`
++ `■ 想定金額%0D%0A${estimatedPrice}%0D%0A`;
+
+document.querySelector('input[name="_subject"]').value = `ワンコイン切り抜き：${activityName}`;
+});
+</script>
+
+<div style="text-align:center;padding-top:10px;">
+<p style="font-size:16px;color:#bbb;margin-bottom:18px;">4本以上のご依頼、又はそれ以外の相談等は以下からお気軽にどうぞ</p>
+
+<div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+
+<a href="https://x.com/matsun0819" class="btn-sub">Xで相談する</a>
+<a href="mailto:NextFeed456@outlook.com" class="btn-sub">メールで相談する</a>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<footer class="footer" style="background:#081226;color:#cbd5e1;text-align:center;display:flex;flex-direction:column;gap:14px;justify-content:center;align-items:center;">
+<div>※ご依頼内容や素材は外部に公開しません　※ご相談・お見積りだけでもOKです</div>
+<div style="font-size:15px;font-weight:700;color:#ffffff;">©NextFeed｜ワンコイン切り抜き</div>
+</footer>
+
 </body>
 </html>
