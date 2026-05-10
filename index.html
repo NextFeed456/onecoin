@@ -291,6 +291,38 @@ grid-template-columns:1fr 1fr !important;
 
 @media(max-width:768px){
 
+.hero-image{
+display:flex;
+flex-direction:column;
+background:#0b0615;
+}
+
+.hero-buttons-overlay{
+position:static !important;
+padding:18px 14px 24px;
+background:#d9c7f5;
+width:100%;
+}
+
+.hero-buttons-overlay a{
+width:100%;
+}
+
+.review-grid,
+.features{
+width:100%;
+max-width:100%;
+overflow:hidden;
+}
+
+.feature-card,
+.review-grid > div{
+width:100%;
+max-width:100%;
+min-width:0;
+}
+
+
 .review-grid{
 grid-template-columns:1fr !important;
 }
@@ -473,7 +505,7 @@ grid-template-columns:1fr !important;
 <section class="section white-section" style="padding-top:70px;">
 <div class="container">
 
-<h2 class="section-title" style="white-space:nowrap;">
+<h2 class="section-title" style="white-space:normal;">
 面白い瞬間を、 <span>Short動画に。</span>
 </h2>
 
@@ -485,7 +517,7 @@ grid-template-columns:1fr !important;
 </span>
 </p>
 
-<div class="features" style="margin-bottom:40px;">
+<div class="features" style="margin-bottom:40px;width:100%;">
 
 <div class="feature-card">
 <div class="feature-icon">✂</div>
