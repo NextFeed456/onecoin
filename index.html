@@ -1037,7 +1037,11 @@ STEP 3
 <textarea id="clip-position-input" name="切り抜き位置" placeholder="例：1:30:00からの○○のシーンをお願いします" style="width:100%;padding:18px;border-radius:16px;border:none;font-size:16px;min-height:130px;background:#f7f0ff;color:#111;"></textarea>
 
 <label style="display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;color:#d8c8ff;font-weight:700;cursor:pointer;">
-<input type="checkbox" id="omakase-check" style="transform:scale(1.2);accent-color:#8b5cf6;">
+<input type="checkbox"
+id="omakase-check"
+name="切り抜き箇所おまかせ"
+value="選択"
+style="transform:scale(1.2);accent-color:#8b5cf6;">
 切り抜き箇所おまかせ（+500円/本）
 </label>
 </div>
@@ -1176,6 +1180,9 @@ optionCheckboxes.forEach(box => {
 box.addEventListener('change', calculatePrice);
 });
 
+document.getElementById('omakase-check')
+.addEventListener('change', calculatePrice);
+  
 calculatePrice();
 </script>
 
